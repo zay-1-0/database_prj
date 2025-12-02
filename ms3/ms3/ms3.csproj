@@ -67,17 +67,38 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Deductions_And_Payroll.aspx" />
     <Content Include="Employees_yesterday_Attendance.aspx" />
+    <Content Include="HR_Leaves.aspx" />
+    <Content Include="Login.aspx" />
     <Content Include="WinterPerformance.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Deductions_And_Payroll.aspx.cs">
+      <DependentUpon>Deductions_And_Payroll.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Deductions_And_Payroll.aspx.designer.cs">
+      <DependentUpon>Deductions_And_Payroll.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Employees_yesterday_Attendance.aspx.cs">
       <DependentUpon>Employees_yesterday_Attendance.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Employees_yesterday_Attendance.aspx.designer.cs">
       <DependentUpon>Employees_yesterday_Attendance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="HR_Leaves.aspx.cs">
+      <DependentUpon>HR_Leaves.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="HR_Leaves.aspx.designer.cs">
+      <DependentUpon>HR_Leaves.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WinterPerformance.aspx.cs">
