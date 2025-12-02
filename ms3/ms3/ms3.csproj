@@ -67,11 +67,37 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AddOfficialHoliday.aspx" />
+    <Content Include="Admin_Emplyee_details.aspx" />
+    <Content Include="Department_employee_count.aspx" />
     <Content Include="Employees_yesterday_Attendance.aspx" />
+    <Content Include="Rejected_medical_leaves.aspx" />
+    <Content Include="update_attendance.aspx" />
     <Content Include="WinterPerformance.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddOfficialHoliday.aspx.cs">
+      <DependentUpon>AddOfficialHoliday.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddOfficialHoliday.aspx.designer.cs">
+      <DependentUpon>AddOfficialHoliday.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_Emplyee_details.aspx.cs">
+      <DependentUpon>Admin_Emplyee_details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin_Emplyee_details.aspx.designer.cs">
+      <DependentUpon>Admin_Emplyee_details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Department_employee_count.aspx.cs">
+      <DependentUpon>Department_employee_count.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Department_employee_count.aspx.designer.cs">
+      <DependentUpon>Department_employee_count.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Employees_yesterday_Attendance.aspx.cs">
       <DependentUpon>Employees_yesterday_Attendance.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -80,6 +106,20 @@
       <DependentUpon>Employees_yesterday_Attendance.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rejected_medical_leaves.aspx.cs">
+      <DependentUpon>Rejected_medical_leaves.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Rejected_medical_leaves.aspx.designer.cs">
+      <DependentUpon>Rejected_medical_leaves.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="update_attendance.aspx.cs">
+      <DependentUpon>update_attendance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="update_attendance.aspx.designer.cs">
+      <DependentUpon>update_attendance.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WinterPerformance.aspx.cs">
       <DependentUpon>WinterPerformance.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
