@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -41,6 +42,7 @@ namespace ms3
 
             if (result != null && (int)result == 1)
             {
+                Session["HR_ID"] = id;
                 Response.Write("Hello");
                 Response.Redirect("HRpage.aspx");
             }
