@@ -67,10 +67,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Employees_yesterday_Attendance.aspx" />
+    <Content Include="WinterPerformance.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Employees_yesterday_Attendance.aspx.cs">
+      <DependentUpon>Employees_yesterday_Attendance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Employees_yesterday_Attendance.aspx.designer.cs">
+      <DependentUpon>Employees_yesterday_Attendance.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WinterPerformance.aspx.cs">
+      <DependentUpon>WinterPerformance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WinterPerformance.aspx.designer.cs">
+      <DependentUpon>WinterPerformance.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
