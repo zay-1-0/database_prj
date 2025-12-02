@@ -14,7 +14,7 @@
             <h2>Pending Leave Requests</h2>
 
 <asp:GridView ID="gvLeaves" runat="server" AutoGenerateColumns="False" 
-    OnRowCommand="gvLeaves_RowCommand" DataKeyNames="RequestID,LeaveType">
+    OnRowCommand="gvLeaves_RowCommand" DataKeyNames="RequestID,LeaveType" OnSelectedIndexChanged="gvLeaves_SelectedIndexChanged">
     <Columns>
         <asp:BoundField DataField="RequestID" HeaderText="Request ID" />
         <asp:BoundField DataField="LeaveType" HeaderText="Leave Type" />

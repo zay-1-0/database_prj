@@ -44,7 +44,7 @@ namespace ms3
             {
                 Session["HR_ID"] = id;
                 Response.Write("Hello");
-                Response.Redirect("HRpage.aspx");
+                Response.Redirect("HR_HomePage.aspx");
             }
 
 

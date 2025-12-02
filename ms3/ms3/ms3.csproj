@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="Deductions_And_Payroll.aspx" />
     <Content Include="Employees_yesterday_Attendance.aspx" />
+    <Content Include="HR_HomePage.aspx" />
     <Content Include="HR_Leaves.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="WinterPerformance.aspx" />
@@ -77,6 +78,7 @@
   <ItemGroup>
     <Compile Include="Deductions_And_Payroll.aspx.cs">
       <DependentUpon>Deductions_And_Payroll.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Deductions_And_Payroll.aspx.designer.cs">
       <DependentUpon>Deductions_And_Payroll.aspx</DependentUpon>
@@ -88,14 +90,23 @@
     <Compile Include="Employees_yesterday_Attendance.aspx.designer.cs">
       <DependentUpon>Employees_yesterday_Attendance.aspx</DependentUpon>
     </Compile>
+    <Compile Include="HR_HomePage.aspx.cs">
+      <DependentUpon>HR_HomePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HR_HomePage.aspx.designer.cs">
+      <DependentUpon>HR_HomePage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="HR_Leaves.aspx.cs">
       <DependentUpon>HR_Leaves.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="HR_Leaves.aspx.designer.cs">
       <DependentUpon>HR_Leaves.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
