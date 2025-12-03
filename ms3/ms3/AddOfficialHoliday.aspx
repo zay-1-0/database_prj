@@ -23,12 +23,12 @@
             Update Attendance
         </p>
         <p class="auto-style1">
-            Holiday ID</p>
+            Holiday Name</p>
         <p class="auto-style1">
             <asp:TextBox ID="emp_id" runat="server"></asp:TextBox>
         </p>
         <p class="auto-style1">
-            Start Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; End Date</p>
+            Start Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; End Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Eg: dd/mm/yyyy</p>
         <p class="auto-style1">
             <asp:TextBox ID="check_in" runat="server"></asp:TextBox>
 &nbsp;<asp:TextBox ID="Check_out" runat="server"></asp:TextBox>
