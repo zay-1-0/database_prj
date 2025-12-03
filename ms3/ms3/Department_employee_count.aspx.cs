@@ -30,9 +30,7 @@ namespace ms3
         {
             try
             {
-                string connStr = WebConfigurationManager
-                                 .ConnectionStrings["UniHR_DB"]
-                                 .ConnectionString;
+                string connStr = WebConfigurationManager.ConnectionStrings["UniHR_DB"].ToString();
                 using (SqlConnection conn = new SqlConnection(connStr))
                 {
                     string query = "SELECT * NoEmployeeDept";

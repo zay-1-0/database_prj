@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data.SqlClient;
-using System.Data;
 
 namespace ms3
 {
@@ -17,7 +18,7 @@ namespace ms3
 
         protected void AddHoliday(object sender, EventArgs e)
         {
-            string connectionString = "YourConnectionStringHere"; // Replace with your actual connection string
+            string connectionString = WebConfigurationManager.ConnectionStrings["UniHR_DB"].ToString(); // Replace with your actual connection string
 
             try
             {
