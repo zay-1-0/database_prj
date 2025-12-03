@@ -73,6 +73,7 @@
     <Content Include="HomePage_employee.aspx" />
     <Content Include="HR_HomePage.aspx" />
     <Content Include="HR_Leaves.aspx" />
+    <Content Include="Deductions_And_Payroll.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="MyAttendance.aspx" />
     <Content Include="MyperformanceView.aspx" />
@@ -90,6 +91,12 @@
     <Compile Include="EmpLogin.aspx.cs">
       <DependentUpon>EmpLogin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Deductions_And_Payroll.aspx.cs">
+      <DependentUpon>Deductions_And_Payroll.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Deductions_And_Payroll.aspx.designer.cs">
+      <DependentUpon>Deductions_And_Payroll.aspx</DependentUpon>
     </Compile>
     <Compile Include="EmpLogin.aspx.designer.cs">
       <DependentUpon>EmpLogin.aspx</DependentUpon>
