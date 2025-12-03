@@ -37,26 +37,21 @@ namespace ms3
 
         protected void RemoveResigned(object sender, EventArgs e)
         {
-            string connectionString = WebConfigurationManager.ConnectionStrings["UniHR_DB"].ToString(); // Replace with your actual connection string
+            string connectionString = WebConfigurationManager.ConnectionStrings["UniHR_DB"].ToString();
 
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
+                    // Make sure you're calling the correct procedure
                     using (SqlCommand command = new SqlCommand("Remove_Deductions", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        // Optional: Add output parameter to get number of records deleted
-                        SqlParameter rowsAffectedParam = new SqlParameter("@RowsAffected", SqlDbType.Int);
-                        rowsAffectedParam.Direction = ParameterDirection.Output;
-                        command.Parameters.Add(rowsAffectedParam);
-
+                        // First, let's execute without parameters to see if that works
                         connection.Open();
-                        int result = command.ExecuteNonQuery();
-                        int rowsAffected = Convert.ToInt32(rowsAffectedParam.Value);
+                        int rowsAffected = command.ExecuteNonQuery();
 
-                        // Show success message
                         ShowMessage($"Successfully removed deductions for {rowsAffected} resigned employee(s).");
                     }
                 }
@@ -71,7 +66,6 @@ namespace ms3
             }
         }
 
-       
 
         protected void UpdateAttendance(object sender, EventArgs e)
         {
@@ -85,7 +79,7 @@ namespace ms3
 
         protected void InitiateAttendance(object sender, EventArgs e)
         {
-            string connectionString = WebConfigurationManager.ConnectionStrings["UniHR_DB"].ToString(); // Replace with your actual connection string
+            string connectionString = WebConfigurationManager.ConnectionStrings["UniHR_DB"].ToString();
 
             try
             {
@@ -95,17 +89,10 @@ namespace ms3
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        // Optional: Add output parameter to get number of records inserted
-                        SqlParameter rowsInsertedParam = new SqlParameter("@RowsInserted", SqlDbType.Int);
-                        rowsInsertedParam.Direction = ParameterDirection.Output;
-                        command.Parameters.Add(rowsInsertedParam);
-
                         connection.Open();
                         int rowsAffected = command.ExecuteNonQuery();
-                        int rowsInserted = rowsInsertedParam.Value != DBNull.Value ?
-                            Convert.ToInt32(rowsInsertedParam.Value) : rowsAffected;
 
-                        ShowMessage($"Attendance initiated successfully. {rowsInserted} new attendance record(s) created for today.");
+                        ShowMessage($"Attendance initiated successfully. {rowsAffected} new attendance record(s) created for today.");
                     }
                 }
             }
@@ -118,7 +105,6 @@ namespace ms3
                 ShowMessage($"Error: {ex.Message}");
             }
         }
-
         private void ShowMessage(string message)
         {
             WarningLabel.Text = message;

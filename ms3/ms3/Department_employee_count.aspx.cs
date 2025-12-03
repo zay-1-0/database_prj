@@ -30,23 +30,30 @@ namespace ms3
         {
             try
             {
+
                 string connStr = WebConfigurationManager.ConnectionStrings["UniHR_DB"].ToString();
+
                 using (SqlConnection conn = new SqlConnection(connStr))
                 {
-                    string query = "SELECT * NoEmployeeDept";
+
+                    string query = "SELECT * FROM NoEmployeeDept";
+
                     SqlCommand cmd = new SqlCommand(query, conn);
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
+
                     conn.Open();
                     da.Fill(dt);
+
                     Depatment_Count_Table.DataSource = dt;
                     Depatment_Count_Table.DataBind();
-                   
+
+
                 }
             }
             catch (Exception ex)
             {
-               
+
             }
         }
 
