@@ -25,7 +25,7 @@
             <asp:Label ID="Rep_Emp" runat="server" Text="Replacement Employee"></asp:Label>
             <br />
             <br />
-            <asp:Button ID="Comp_Submit" runat="server" Text="Submit" />
+            <asp:Button ID="Comp_Submit" runat="server" Text="Submit" OnClick="Comp_Submit_Click" style="height: 29px" />
         </div>
     </form>
 </body>

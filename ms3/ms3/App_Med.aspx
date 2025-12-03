@@ -37,7 +37,7 @@
             <asp:Label ID="F_name" runat="server" Text="File Name"></asp:Label>
             <br />
             <br />
-            <asp:Button ID="Med_Submit" runat="server" Text="Submit" />
+            <asp:Button ID="Med_Submit" runat="server" Text="Submit" OnClick="Med_Submit_Click" />
         </div>
     </form>
 </body>

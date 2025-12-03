@@ -9,10 +9,6 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            Replacement Employee:
-            <br />
-            <asp:Label ID="Rep_Emp" runat="server" Text="Replacement Employee"></asp:Label>
-            <br />
             Start Date:<br />
             <asp:Label ID="Start" runat="server" Text="Start Date"></asp:Label>
             <br />
