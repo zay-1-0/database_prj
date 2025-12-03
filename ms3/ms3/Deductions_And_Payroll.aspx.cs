@@ -24,26 +24,33 @@ namespace ms3
 
         private void BindEmployeesDropdown()
         {
-            String connStr = WebConfigurationManager.ConnectionStrings["M3"].ToString();
+            string connStr = WebConfigurationManager.ConnectionStrings["UniHR_DB"].ToString();
 
             using (SqlConnection conn = new SqlConnection(connStr))
             {
-                SqlCommand cmd = new SqlCommand(
-                    "SELECT EmployeeID, EmployeeName + ' (ID: ' + CAST(EmployeeID AS VARCHAR) + ')' AS DisplayText FROM Employees",
-                    conn
-                );
+                
+                string query = @"
+            SELECT 
+                employee_id, 
+                first_name + ' ' + last_name + ' (ID: ' + CAST(employee_id AS VARCHAR) + ')' AS DisplayText
+            FROM dbo.Employee";
 
+                SqlCommand cmd = new SqlCommand(query, conn);
                 conn.Open();
-                SqlDataReader reader = cmd.ExecuteReader();
 
-                ddlEmployees.DataSource = reader;
-                ddlEmployees.DataTextField = "DisplayText";   // Show both name and ID
-                ddlEmployees.DataValueField = "EmployeeID";   // Use ID internally
-                ddlEmployees.DataBind();
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    ddlEmployees.DataSource = reader;
+                    ddlEmployees.DataTextField = "DisplayText";
+                    ddlEmployees.DataValueField = "employee_id";
+                    ddlEmployees.DataBind();
+                }
             }
 
             ddlEmployees.Items.Insert(0, new ListItem("--Select Employee--", "0"));
         }
+
+
 
         protected void btnDeductHours_Click(object sender, EventArgs e)
         {
@@ -53,6 +60,7 @@ namespace ms3
             if (employeeId == 0)
             {
                 lblMessage.Text = "Please select an employee.";
+                lblMessage.ForeColor = System.Drawing.Color.Red;
                 return;
             }
 
@@ -72,6 +80,7 @@ namespace ms3
             if (employeeId == 0)
             {
                 lblMessage.Text = "Please select an employee.";
+                lblMessage.ForeColor = System.Drawing.Color.Red;
                 return;
             }
 
@@ -92,12 +101,23 @@ namespace ms3
                     lblMessage.ForeColor = System.Drawing.Color.Red;
                     return;
                 }
-                String connStr = WebConfigurationManager.ConnectionStrings["M3"].ToString();
+                String connStr = WebConfigurationManager.ConnectionStrings["UniHR_DB"].ToString();
                 using (SqlConnection conn = new SqlConnection(connStr))
                 {
                     SqlCommand cmd = new SqlCommand("Add_Payroll", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
+                    int employeeId = int.Parse(ddlEmployees.SelectedValue);
+
+                    if (employeeId == 0)
+                    {
+                        lblMessage.Text = "Please select an employee.";
+                        lblMessage.ForeColor = System.Drawing.Color.Red;
+                        return;
+                    }
+
+
+                    cmd.Parameters.Add(new SqlParameter("@employee_ID", employeeId));
                     cmd.Parameters.Add(new SqlParameter("@from", fromDate));
                     cmd.Parameters.Add(new SqlParameter("@to", toDate));
 
@@ -124,6 +144,7 @@ namespace ms3
             if (employeeId == 0)
             {
                 lblMessage.Text = "Please select an employee.";
+                lblMessage.ForeColor = System.Drawing.Color.Red;
                 return;
             }
 
@@ -133,12 +154,12 @@ namespace ms3
 
         private void ExecuteProcedure(string procedureName, int employeeId)
         {
-            String connStr = WebConfigurationManager.ConnectionStrings["M3"].ToString();
+            String connStr = WebConfigurationManager.ConnectionStrings["UniHR_DB"].ToString();
             using (SqlConnection conn = new SqlConnection(connStr))
             {
                 SqlCommand cmd = new SqlCommand(procedureName, conn);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@EmployeeID", employeeId);
+                cmd.Parameters.AddWithValue("@employee_ID", employeeId);
 
 
 

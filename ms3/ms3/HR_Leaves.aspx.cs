@@ -17,6 +17,13 @@ namespace ms3
         {
             if (!IsPostBack)
             {
+                if (Session["HR_ID"] == null)
+                {
+                    // Redirect to login page if session is missing
+                    Response.Redirect("Login.aspx");
+                    return;
+                }
+
                 BindPendingLeaves();
             }
 
@@ -25,13 +32,13 @@ namespace ms3
 
         private void BindPendingLeaves()
         {
-            string connStr = WebConfigurationManager.ConnectionStrings["M3"].ToString();
+            string connStr = WebConfigurationManager.ConnectionStrings["UniHR_DB"].ToString();
 
             using (SqlConnection conn = new SqlConnection(connStr))
             {
                 string query = @"
             SELECT 
-                EAL.RequestID,
+                EAL.leave_ID AS RequestID,
                 
 
                 CASE 
@@ -52,11 +59,17 @@ namespace ms3
 
             WHERE 
                 EAL.Emp1_ID = @hr
-                AND EAL.Status = 'Pending';
+                AND EAL.Status = 'Pending'
+AND (
+        AN.request_ID IS NOT NULL
+        OR AC.request_ID IS NOT NULL
+        OR U.request_ID IS NOT NULL
+        OR C.request_ID IS NOT NULL
+    )
         ";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@hr", Session["HR_id"]);
+                cmd.Parameters.AddWithValue("@hr", Convert.ToInt32(Session["HR_ID"]));
 
                 conn.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -73,15 +86,12 @@ namespace ms3
         {
             if (e.CommandName == "Process")
             {
-                int rowIndex = ((GridViewRow)((Button)e.CommandSource).NamingContainer).RowIndex;
-
+                int rowIndex = Convert.ToInt32(e.CommandArgument); 
                 int requestId = Convert.ToInt32(gvLeaves.DataKeys[rowIndex]["RequestID"]);
                 string leaveType = gvLeaves.DataKeys[rowIndex]["LeaveType"].ToString();
 
-              
                 ExecuteLeaveProcedure(requestId, leaveType);
 
-               
                 BindPendingLeaves();
 
                 lblLeaveMessage.ForeColor = System.Drawing.Color.Green;
@@ -91,9 +101,10 @@ namespace ms3
 
 
 
+
         private void ExecuteLeaveProcedure(int requestId, string leaveType)
         {
-            string connStr = WebConfigurationManager.ConnectionStrings["M3"].ToString();
+            string connStr = WebConfigurationManager.ConnectionStrings["UniHR_DB"].ToString();
 
             using (SqlConnection conn = new SqlConnection(connStr))
             {
@@ -124,7 +135,7 @@ namespace ms3
 
                 
                 cmd.Parameters.AddWithValue("@request_ID", requestId);
-                cmd.Parameters.AddWithValue("@HR_ID", Session["HR_id"]);
+                cmd.Parameters.AddWithValue("@HR_ID", Convert.ToInt32(Session["HR_ID"]));
                
 
                 cmd.ExecuteNonQuery();
