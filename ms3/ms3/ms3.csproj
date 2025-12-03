@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AddOfficialHoliday.aspx" />
+    <Content Include="AdminHomePage.aspx" />
     <Content Include="Admin_Emplyee_details.aspx" />
     <Content Include="Department_employee_count.aspx" />
     <Content Include="Employees_yesterday_Attendance.aspx" />
@@ -87,6 +88,13 @@
     </Compile>
     <Compile Include="AddOfficialHoliday.aspx.designer.cs">
       <DependentUpon>AddOfficialHoliday.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminHomePage.aspx.cs">
+      <DependentUpon>AdminHomePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminHomePage.aspx.designer.cs">
+      <DependentUpon>AdminHomePage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin_Emplyee_details.aspx.cs">
       <DependentUpon>Admin_Emplyee_details.aspx</DependentUpon>
@@ -111,18 +119,21 @@
     </Compile>
     <Compile Include="HR_HomePage.aspx.cs">
       <DependentUpon>HR_HomePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="HR_HomePage.aspx.designer.cs">
       <DependentUpon>HR_HomePage.aspx</DependentUpon>
     </Compile>
     <Compile Include="HR_Leaves.aspx.cs">
       <DependentUpon>HR_Leaves.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="HR_Leaves.aspx.designer.cs">
       <DependentUpon>HR_Leaves.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -130,6 +141,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Deductions_And_Payroll.aspx.cs">
       <DependentUpon>Deductions_And_Payroll.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Deductions_And_Payroll.aspx.designer.cs">
       <DependentUpon>Deductions_And_Payroll.aspx</DependentUpon>

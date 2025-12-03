@@ -23,7 +23,7 @@ namespace ms3
 
         protected void goToAdminHomePage(object sender, EventArgs e)
         {
-            Response.Redirect("Admin_HomePage.aspx");
+            Response.Redirect("AdminHomePage.aspx");
         }
 
         private void loadDepartmentEmployeeCountData()
