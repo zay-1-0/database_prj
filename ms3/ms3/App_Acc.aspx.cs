@@ -43,6 +43,12 @@ namespace ms3
 
 
                 cmd.ExecuteNonQuery();
+
+                ClientScript.RegisterStartupScript(this.GetType(),
+                    "Success",
+                    "alert('Accidental leave submitted successfully!');",
+                    true);
+
             }
         }
     }

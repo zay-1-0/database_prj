@@ -71,6 +71,7 @@
     <Content Include="App_Comp.aspx" />
     <Content Include="App_Med.aspx" />
     <Content Include="App_Unp.aspx" />
+    <Content Include="Dean_Pres_exc.aspx" />
     <Content Include="Deductions_And_Payroll.aspx" />
     <Content Include="Employee Page 2.aspx" />
     <Content Include="Employees_yesterday_Attendance.aspx" />
@@ -108,6 +109,13 @@
     </Compile>
     <Compile Include="App_Unp.aspx.designer.cs">
       <DependentUpon>App_Unp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Dean_Pres_exc.aspx.cs">
+      <DependentUpon>Dean_Pres_exc.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dean_Pres_exc.aspx.designer.cs">
+      <DependentUpon>Dean_Pres_exc.aspx</DependentUpon>
     </Compile>
     <Compile Include="Deductions_And_Payroll.aspx.cs">
       <DependentUpon>Deductions_And_Payroll.aspx</DependentUpon>
