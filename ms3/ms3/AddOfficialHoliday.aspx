@@ -20,8 +20,7 @@
             <asp:Button ID="backButton" runat="server" onClick="goToAdminHomePage" Text="back" />
         </p>
         <p class="auto-style2">
-            Update Attendance
-        </p>
+            Add Official Holiday</p>
         <p class="auto-style1">
             Holiday Name</p>
         <p class="auto-style1">
