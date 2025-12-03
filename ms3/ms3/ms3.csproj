@@ -67,7 +67,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Acc.aspx" />
+    <Content Include="App_Comp.aspx" />
+    <Content Include="App_Med.aspx" />
+    <Content Include="App_Unp.aspx" />
     <Content Include="Deductions_And_Payroll.aspx" />
+    <Content Include="Employee Page 2.aspx" />
     <Content Include="Employees_yesterday_Attendance.aspx" />
     <Content Include="HR_HomePage.aspx" />
     <Content Include="HR_Leaves.aspx" />
@@ -76,12 +81,47 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Acc.aspx.cs">
+      <DependentUpon>App_Acc.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Acc.aspx.designer.cs">
+      <DependentUpon>App_Acc.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Comp.aspx.cs">
+      <DependentUpon>App_Comp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Comp.aspx.designer.cs">
+      <DependentUpon>App_Comp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Med.aspx.cs">
+      <DependentUpon>App_Med.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Med.aspx.designer.cs">
+      <DependentUpon>App_Med.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Unp.aspx.cs">
+      <DependentUpon>App_Unp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Unp.aspx.designer.cs">
+      <DependentUpon>App_Unp.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Deductions_And_Payroll.aspx.cs">
       <DependentUpon>Deductions_And_Payroll.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Deductions_And_Payroll.aspx.designer.cs">
       <DependentUpon>Deductions_And_Payroll.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Employee Page 2.aspx.cs">
+      <DependentUpon>Employee Page 2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Employee Page 2.aspx.designer.cs">
+      <DependentUpon>Employee Page 2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Employees_yesterday_Attendance.aspx.cs">
       <DependentUpon>Employees_yesterday_Attendance.aspx</DependentUpon>
