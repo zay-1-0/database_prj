@@ -80,6 +80,7 @@
     <Content Include="Employee Home Page%28Upperboard%29.aspx" />
     <Content Include="Employee Page 2.aspx" />
     <Content Include="Employees_yesterday_Attendance.aspx" />
+    <Content Include="First_page.aspx" />
     <Content Include="HomePage_employee.aspx" />
     <Content Include="HR_HomePage.aspx" />
     <Content Include="HR_Leaves.aspx" />
@@ -190,6 +191,13 @@
     </Compile>
     <Compile Include="Employees_yesterday_Attendance.aspx.designer.cs">
       <DependentUpon>Employees_yesterday_Attendance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="First_page.aspx.cs">
+      <DependentUpon>First_page.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="First_page.aspx.designer.cs">
+      <DependentUpon>First_page.aspx</DependentUpon>
     </Compile>
     <Compile Include="HomePage_employee.aspx.cs">
       <DependentUpon>HomePage_employee.aspx</DependentUpon>

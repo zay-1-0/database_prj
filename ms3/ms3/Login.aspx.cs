@@ -53,7 +53,7 @@ namespace ms3
                     }
                     else
                     {
-                        Response.Write("Invalid username or password");
+                        lblMessage.Text = "Invalid username or password";
                     }
                 }
                 catch (Exception ex)
