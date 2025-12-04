@@ -74,6 +74,7 @@
     <Content Include="App_Comp.aspx" />
     <Content Include="App_Med.aspx" />
     <Content Include="App_Unp.aspx" />
+    <Content Include="AttendanceTools.aspx" />
     <Content Include="Dean_Pres_exc.aspx" />
     <Content Include="Department_employee_count.aspx" />
     <Content Include="EmpLogin.aspx" />
@@ -92,7 +93,12 @@
     <Content Include="MyAttendance.aspx" />
     <Content Include="MyperformanceView.aspx" />
     <Content Include="Rejected_medical_leaves.aspx" />
+    <Content Include="RemoveApprovedLeaves.aspx" />
+    <Content Include="RemoveDayoff.aspx" />
+    <Content Include="RemoveHoliday.aspx" />
+    <Content Include="ReplaceEmployee.aspx" />
     <Content Include="Ret_Status_leaves.aspx" />
+    <Content Include="UpdateEmploymentStatus.aspx" />
     <Content Include="update_attendance.aspx" />
     <Content Include="WinterPerformance.aspx" />
     <Content Include="Web.config" />
@@ -100,6 +106,7 @@
   <ItemGroup>
     <Compile Include="Apply_Annual_leave.aspx.cs">
       <DependentUpon>Apply_Annual_leave.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Apply_Annual_leave.aspx.designer.cs">
       <DependentUpon>Apply_Annual_leave.aspx</DependentUpon>
@@ -131,6 +138,13 @@
     </Compile>
     <Compile Include="App_Unp.aspx.designer.cs">
       <DependentUpon>App_Unp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AttendanceTools.aspx.cs">
+      <DependentUpon>AttendanceTools.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AttendanceTools.aspx.designer.cs">
+      <DependentUpon>AttendanceTools.aspx</DependentUpon>
     </Compile>
     <Compile Include="Dean_Pres_exc.aspx.cs">
       <DependentUpon>Dean_Pres_exc.aspx</DependentUpon>
@@ -204,6 +218,7 @@
     </Compile>
     <Compile Include="FetchDeduction_Attendance.aspx.cs">
       <DependentUpon>FetchDeduction_Attendance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="FetchDeduction_Attendance.aspx.designer.cs">
       <DependentUpon>FetchDeduction_Attendance.aspx</DependentUpon>
@@ -238,6 +253,7 @@
     </Compile>
     <Compile Include="Last_month_payroll.aspx.cs">
       <DependentUpon>Last_month_payroll.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Last_month_payroll.aspx.designer.cs">
       <DependentUpon>Last_month_payroll.aspx</DependentUpon>
@@ -271,11 +287,47 @@
     <Compile Include="Rejected_medical_leaves.aspx.designer.cs">
       <DependentUpon>Rejected_medical_leaves.aspx</DependentUpon>
     </Compile>
+    <Compile Include="RemoveApprovedLeaves.aspx.cs">
+      <DependentUpon>RemoveApprovedLeaves.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RemoveApprovedLeaves.aspx.designer.cs">
+      <DependentUpon>RemoveApprovedLeaves.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RemoveDayoff.aspx.cs">
+      <DependentUpon>RemoveDayoff.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RemoveDayoff.aspx.designer.cs">
+      <DependentUpon>RemoveDayoff.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RemoveHoliday.aspx.cs">
+      <DependentUpon>RemoveHoliday.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RemoveHoliday.aspx.designer.cs">
+      <DependentUpon>RemoveHoliday.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReplaceEmployee.aspx.cs">
+      <DependentUpon>ReplaceEmployee.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReplaceEmployee.aspx.designer.cs">
+      <DependentUpon>ReplaceEmployee.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Ret_Status_leaves.aspx.cs">
       <DependentUpon>Ret_Status_leaves.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Ret_Status_leaves.aspx.designer.cs">
       <DependentUpon>Ret_Status_leaves.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateEmploymentStatus.aspx.cs">
+      <DependentUpon>UpdateEmploymentStatus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UpdateEmploymentStatus.aspx.designer.cs">
+      <DependentUpon>UpdateEmploymentStatus.aspx</DependentUpon>
     </Compile>
     <Compile Include="update_attendance.aspx.cs">
       <DependentUpon>update_attendance.aspx</DependentUpon>
