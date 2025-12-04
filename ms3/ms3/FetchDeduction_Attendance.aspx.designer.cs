@@ -11,7 +11,7 @@ namespace ms3
 {
 
 
-    public partial class MyAttendance
+    public partial class FetchDeduction_Attendance
     {
 
         /// <summary>
@@ -24,22 +24,40 @@ namespace ms3
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// AttendanceGridView control.
+        /// lblSemester control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView AttendanceGridView;
+        protected global::System.Web.UI.WebControls.Label lblSemester;
 
         /// <summary>
-        /// litMessage control.
+        /// month control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litMessage;
+        protected global::System.Web.UI.WebControls.TextBox month;
+
+        /// <summary>
+        /// GetTable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button GetTable;
+
+        /// <summary>
+        /// DeductionGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView DeductionGridView;
 
         /// <summary>
         /// HomeButton control.
@@ -49,5 +67,14 @@ namespace ms3
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button HomeButton;
+
+        /// <summary>
+        /// litMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litMessage;
     }
 }

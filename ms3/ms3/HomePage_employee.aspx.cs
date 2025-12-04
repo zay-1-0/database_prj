@@ -18,10 +18,30 @@ namespace ms3
         {
             Response.Redirect("MyperformanceView.aspx");
         }
+        
+        protected void fetchDed(object sender, EventArgs e)
+        {
+            Response.Redirect("FetchDeduction_Attendance.aspx");
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("MyAttendance.aspx");
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Last_month_payroll.aspx");
+        }
 
         protected void Button4_Click(object sender, EventArgs e)
         {
+            Response.Redirect("Apply_Annual_leave.aspx");
+        }
 
+        protected void Button5_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Ret_Status_leaves.aspx");
         }
     }
 }

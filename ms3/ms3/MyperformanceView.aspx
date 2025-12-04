@@ -104,6 +104,8 @@
                 EmptyDataText="No performance records found for this semester." />
             
             <asp:Literal ID="litMessage" runat="server"></asp:Literal>
+
+            <asp:Button ID="HomeButton" runat="server" Text="Go to Home Page" OnClick="HomeButton_Click" />
             
         </div>
     </form>
