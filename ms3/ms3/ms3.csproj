@@ -76,6 +76,8 @@
     <Content Include="Dean_Pres_exc.aspx" />
     <Content Include="Department_employee_count.aspx" />
     <Content Include="EmpLogin.aspx" />
+    <Content Include="Employee Home Page%28Normal%29.aspx" />
+    <Content Include="Employee Home Page%28Upperboard%29.aspx" />
     <Content Include="Employee Page 2.aspx" />
     <Content Include="Employees_yesterday_Attendance.aspx" />
     <Content Include="HomePage_employee.aspx" />
@@ -160,6 +162,20 @@
     </Compile>
     <Compile Include="EmpLogin.aspx.designer.cs">
       <DependentUpon>EmpLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Employee Home Page%28Normal%29.aspx.cs">
+      <DependentUpon>Employee Home Page%28Normal%29.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Employee Home Page%28Normal%29.aspx.designer.cs">
+      <DependentUpon>Employee Home Page%28Normal%29.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Employee Home Page%28Upperboard%29.aspx.cs">
+      <DependentUpon>Employee Home Page%28Upperboard%29.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Employee Home Page%28Upperboard%29.aspx.designer.cs">
+      <DependentUpon>Employee Home Page%28Upperboard%29.aspx</DependentUpon>
     </Compile>
     <Compile Include="Employee Page 2.aspx.cs">
       <DependentUpon>Employee Page 2.aspx</DependentUpon>
