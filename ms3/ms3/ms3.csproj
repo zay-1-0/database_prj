@@ -68,41 +68,90 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AddOfficialHoliday.aspx" />
-    <Content Include="AdminHomePage.aspx" />
-    <Content Include="AdminLogin.aspx" />
     <Content Include="Admin_Emplyee_details.aspx" />
+    <Content Include="Apply_Annual_leave.aspx" />
+    <Content Include="App_Acc.aspx" />
+    <Content Include="App_Comp.aspx" />
+    <Content Include="App_Med.aspx" />
+    <Content Include="App_Unp.aspx" />
+    <Content Include="Dean_Pres_exc.aspx" />
     <Content Include="Department_employee_count.aspx" />
+    <Content Include="EmpLogin.aspx" />
+    <Content Include="Employee Home Page%28Normal%29.aspx" />
+    <Content Include="Employee Home Page%28Upperboard%29.aspx" />
+    <Content Include="Employee Page 2.aspx" />
     <Content Include="Employees_yesterday_Attendance.aspx" />
+    <Content Include="FetchDeduction_Attendance.aspx" />
+    <Content Include="First_page.aspx" />
+    <Content Include="HomePage_employee.aspx" />
     <Content Include="HR_HomePage.aspx" />
     <Content Include="HR_Leaves.aspx" />
+    <Content Include="Last_month_payroll.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Deductions_And_Payroll.aspx" />
+    <Content Include="MyAttendance.aspx" />
+    <Content Include="MyperformanceView.aspx" />
     <Content Include="Rejected_medical_leaves.aspx" />
+    <Content Include="Ret_Status_leaves.aspx" />
     <Content Include="update_attendance.aspx" />
     <Content Include="WinterPerformance.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Apply_Annual_leave.aspx.cs">
+      <DependentUpon>Apply_Annual_leave.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Apply_Annual_leave.aspx.designer.cs">
+      <DependentUpon>Apply_Annual_leave.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Acc.aspx.cs">
+      <DependentUpon>App_Acc.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Acc.aspx.designer.cs">
+      <DependentUpon>App_Acc.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Comp.aspx.cs">
+      <DependentUpon>App_Comp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Comp.aspx.designer.cs">
+      <DependentUpon>App_Comp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Med.aspx.cs">
+      <DependentUpon>App_Med.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Med.aspx.designer.cs">
+      <DependentUpon>App_Med.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Unp.aspx.cs">
+      <DependentUpon>App_Unp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Unp.aspx.designer.cs">
+      <DependentUpon>App_Unp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Dean_Pres_exc.aspx.cs">
+      <DependentUpon>Dean_Pres_exc.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dean_Pres_exc.aspx.designer.cs">
+      <DependentUpon>Dean_Pres_exc.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Deductions_And_Payroll.aspx.cs">
+      <DependentUpon>Deductions_And_Payroll.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Deductions_And_Payroll.aspx.designer.cs">
+      <DependentUpon>Deductions_And_Payroll.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AddOfficialHoliday.aspx.cs">
       <DependentUpon>AddOfficialHoliday.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AddOfficialHoliday.aspx.designer.cs">
       <DependentUpon>AddOfficialHoliday.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="AdminHomePage.aspx.cs">
-      <DependentUpon>AdminHomePage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AdminHomePage.aspx.designer.cs">
-      <DependentUpon>AdminHomePage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="AdminLogin.aspx.cs">
-      <DependentUpon>AdminLogin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AdminLogin.aspx.designer.cs">
-      <DependentUpon>AdminLogin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin_Emplyee_details.aspx.cs">
       <DependentUpon>Admin_Emplyee_details.aspx</DependentUpon>
@@ -118,12 +167,60 @@
     <Compile Include="Department_employee_count.aspx.designer.cs">
       <DependentUpon>Department_employee_count.aspx</DependentUpon>
     </Compile>
+    <Compile Include="EmpLogin.aspx.cs">
+      <DependentUpon>EmpLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EmpLogin.aspx.designer.cs">
+      <DependentUpon>EmpLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Employee Home Page%28Normal%29.aspx.cs">
+      <DependentUpon>Employee Home Page%28Normal%29.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Employee Home Page%28Normal%29.aspx.designer.cs">
+      <DependentUpon>Employee Home Page%28Normal%29.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Employee Home Page%28Upperboard%29.aspx.cs">
+      <DependentUpon>Employee Home Page%28Upperboard%29.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Employee Home Page%28Upperboard%29.aspx.designer.cs">
+      <DependentUpon>Employee Home Page%28Upperboard%29.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Employee Page 2.aspx.cs">
+      <DependentUpon>Employee Page 2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Employee Page 2.aspx.designer.cs">
+      <DependentUpon>Employee Page 2.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Employees_yesterday_Attendance.aspx.cs">
       <DependentUpon>Employees_yesterday_Attendance.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Employees_yesterday_Attendance.aspx.designer.cs">
       <DependentUpon>Employees_yesterday_Attendance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FetchDeduction_Attendance.aspx.cs">
+      <DependentUpon>FetchDeduction_Attendance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FetchDeduction_Attendance.aspx.designer.cs">
+      <DependentUpon>FetchDeduction_Attendance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="First_page.aspx.cs">
+      <DependentUpon>First_page.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="First_page.aspx.designer.cs">
+      <DependentUpon>First_page.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="HomePage_employee.aspx.cs">
+      <DependentUpon>HomePage_employee.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HomePage_employee.aspx.designer.cs">
+      <DependentUpon>HomePage_employee.aspx</DependentUpon>
     </Compile>
     <Compile Include="HR_HomePage.aspx.cs">
       <DependentUpon>HR_HomePage.aspx</DependentUpon>
@@ -139,6 +236,12 @@
     <Compile Include="HR_Leaves.aspx.designer.cs">
       <DependentUpon>HR_Leaves.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Last_month_payroll.aspx.cs">
+      <DependentUpon>Last_month_payroll.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Last_month_payroll.aspx.designer.cs">
+      <DependentUpon>Last_month_payroll.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -146,20 +249,33 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Deductions_And_Payroll.aspx.cs">
-      <DependentUpon>Deductions_And_Payroll.aspx</DependentUpon>
+    <Compile Include="MyAttendance.aspx.cs">
+      <DependentUpon>MyAttendance.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Deductions_And_Payroll.aspx.designer.cs">
-      <DependentUpon>Deductions_And_Payroll.aspx</DependentUpon>
+    <Compile Include="MyAttendance.aspx.designer.cs">
+      <DependentUpon>MyAttendance.aspx</DependentUpon>
     </Compile>
+    <Compile Include="MyperformanceView.aspx.cs">
+      <DependentUpon>MyperformanceView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MyperformanceView.aspx.designer.cs">
+      <DependentUpon>MyperformanceView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rejected_medical_leaves.aspx.cs">
       <DependentUpon>Rejected_medical_leaves.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Rejected_medical_leaves.aspx.designer.cs">
       <DependentUpon>Rejected_medical_leaves.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ret_Status_leaves.aspx.cs">
+      <DependentUpon>Ret_Status_leaves.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ret_Status_leaves.aspx.designer.cs">
+      <DependentUpon>Ret_Status_leaves.aspx</DependentUpon>
     </Compile>
     <Compile Include="update_attendance.aspx.cs">
       <DependentUpon>update_attendance.aspx</DependentUpon>
@@ -192,13 +308,6 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
   <ProjectExtensions>
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
