@@ -146,6 +146,11 @@ AND (
         {
 
         }
+
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("HR_HomePage.aspx");
+        }
     }
 }
 

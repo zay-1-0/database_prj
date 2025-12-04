@@ -20,9 +20,9 @@ namespace ms3
         protected void Acc_Submit_Click(object sender, EventArgs e)
         {
             string connStr = WebConfigurationManager.ConnectionStrings["UniHR_DB"].ToString();
-            
-            DateTime start = DateTime.Parse(Start.Text);
-            DateTime end = DateTime.Parse(End.Text);
+            DateTime start = DateTime.Parse(calStart.Text);
+            DateTime end = DateTime.Parse(calEnd.Text);
+
 
 
             using (SqlConnection conn = new SqlConnection(connStr))

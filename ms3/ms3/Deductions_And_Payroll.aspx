@@ -27,6 +27,31 @@
             margin-bottom: 30px;
         }
 
+        .btn {
+            background-color: #007ACC;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn:hover {
+            background-color: #005fa3;
+        }
+
+        .btn-back {
+            background-color: #999;
+            margin-bottom: 20px;
+        }
+
+        .btn-back:hover {
+            background-color: #777;
+        }
+
         label, asp\:Label {
             display: inline-block;
             margin-top: 10px;
@@ -42,22 +67,6 @@
             border-radius: 4px;
             margin-bottom: 15px;
             box-sizing: border-box;
-        }
-
-        .btn {
-            background-color: #007ACC;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            margin-top: 10px;
-            margin-bottom: 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-
-        .btn:hover {
-            background-color: #005fa3;
         }
 
         #lblMessage {
@@ -84,17 +93,28 @@
         }
     </style>
 </head>
+
 <body>
     <form id="form1" runat="server">
         <div class="container">
+
+            <!-- BACK BUTTON -->
+            <asp:Button ID="btnBack" runat="server" Text="⟵ Back" CssClass="btn btn-back"
+                OnClick="btnBack_Click" />
+
             <h2>Employee Deductions and Monthly Payroll</h2>
 
             <asp:Label ID="lblEmployee" runat="server" Text="Select Employee:" /><br />
             <asp:DropDownList ID="ddlEmployees" runat="server" /><br />
 
-            <asp:Button ID="btnDeductHours" runat="server" Text="Deduct Hours" CssClass="btn" OnClick="btnDeductHours_Click" /><br />
-            <asp:Button ID="btnDeductDays" runat="server" Text="Deduct Days" CssClass="btn" OnClick="btnDeductDays_Click" /><br />
-            <asp:Button ID="btnDeductUnpaid" runat="server" Text="Deduct Unpaid" CssClass="btn" OnClick="btnDeductUnpaid_Click" /><br />
+            <asp:Button ID="btnDeductHours" runat="server" Text="Deduct Hours" CssClass="btn"
+                OnClick="btnDeductHours_Click" /><br />
+
+            <asp:Button ID="btnDeductDays" runat="server" Text="Deduct Days" CssClass="btn"
+                OnClick="btnDeductDays_Click" /><br />
+
+            <asp:Button ID="btnDeductUnpaid" runat="server" Text="Deduct Unpaid" CssClass="btn"
+                OnClick="btnDeductUnpaid_Click" /><br />
 
             <div class="date-range">
                 <asp:Label ID="lblFrom" runat="server" Text="From Date:" />
@@ -103,7 +123,8 @@
                 <asp:TextBox ID="txtTo" runat="server" TextMode="Date" />
             </div>
 
-            <asp:Button ID="btnGeneratePayroll" runat="server" Text="Generate Payroll" CssClass="btn" OnClick="btnGeneratePayroll_Click" /><br />
+            <asp:Button ID="btnGeneratePayroll" runat="server" Text="Generate Payroll"
+                CssClass="btn" OnClick="btnGeneratePayroll_Click" /><br />
 
             <asp:Label ID="lblMessage" runat="server" Text="" />
         </div>

@@ -96,6 +96,11 @@
             </asp:GridView>
 
             <asp:Label ID="lblLeaveMessage" runat="server" Text="" />
+
+
+
+             <asp:Button ID="btnBack" runat="server" Text="⟵ Back" CssClass="btn btn-back"
+     OnClick="btnBack_Click" />
         </div>
     </form>
 </body>
