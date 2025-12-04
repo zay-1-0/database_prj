@@ -12,6 +12,13 @@
 
             Welcome!<br />
             What would you like to do?<br />
+            <asp:Button ID="Ret_Perf" runat="server" Text="Retrieve Performance" />
+            <asp:Button ID="Ret_Att" runat="server" Text="Retrieve attendance" />
+            <asp:Button ID="Ret_pay" runat="server" Text="Retrieve Payroll" />
+            <asp:Button ID="Fetch_Ded" runat="server" Text="Fetch Deductions" />
+            <asp:Button ID="View_Ann_Acc" runat="server" Text="View Annual/Accidental Leaves" />
+            <asp:Button ID="App_Leave" runat="server" Text="Apply for a leave" />
+            <br />
 
         </div>
     </form>

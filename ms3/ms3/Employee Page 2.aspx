@@ -17,6 +17,7 @@
         <asp:Button ID="App_Med" runat="server" Text="Medical Leave" OnClick="App_Med_Click" />
         <asp:Button ID="App_Unp" runat="server" Text="Unpaid Leave" OnClick="App_Unp_Click" />
         <asp:Button ID="App_Comp" runat="server" Text="Compensation Leave" OnClick="App_Comp_Click" />
+        <asp:Button ID="Button5" runat="server" Text="Annual leave" OnClick="Button4_Click" />
     </form>
 </body>
 </html>
