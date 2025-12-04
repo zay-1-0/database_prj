@@ -16,7 +16,7 @@ namespace ms3
 
         protected void btnAdmin_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("AdminLogin.aspx");
         }
 
         protected void btnHR_Click(object sender, EventArgs e)
