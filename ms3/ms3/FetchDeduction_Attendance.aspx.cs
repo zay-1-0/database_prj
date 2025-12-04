@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
 using System.Web;
 using System.Web.Configuration;
 using System.Web.UI;
@@ -11,7 +10,7 @@ using System.Web.UI.WebControls;
 
 namespace ms3
 {
-    public partial class MyperformanceView : System.Web.UI.Page
+    public partial class FetchDeduction_Attendance : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -20,13 +19,13 @@ namespace ms3
 
         protected void GetTable_Click(object sender, EventArgs e)
         {
-            string semesterValue = Semester.Text; // Get the semester input from the TextBox
+            int MonthValue = Int16.Parse(month.Text); // Get the semester input from the TextBox
 
             // Input validation
-            if (semesterValue.Length==0) //makes sure the string is not empty
+            if (MonthValue == 0) //makes sure the int is not zero or empty
             {
                 //makes the colour of the 
-                litMessage.Text = "<p> Please enter a semester value (e.g., W24).</p>"; 
+                litMessage.Text = "<p> Please enter a Month (e.g., 1 for jan).</p>";
                 return; //returns so it doesnt continue executing the rest of the code
             }
 
@@ -40,7 +39,7 @@ namespace ms3
 
             // Database connection setup
             string connstr = WebConfigurationManager.ConnectionStrings["UniHR_DB"].ToString();
-            string sqlQuery = "SELECT * FROM dbo.MyPerformance(@EmployeeID, @period)";
+            string sqlQuery = "SELECT * FROM dbo.Deductions_Attendance(@EmployeeID, @month)";
 
             // DataTable to hold the results
             DataTable dt = new DataTable();
@@ -53,10 +52,10 @@ namespace ms3
                     {
                         // Add parameters securely
                         viewPerformance.Parameters.AddWithValue("@EmployeeID", Session["Employee_id"]);
-                        viewPerformance.Parameters.AddWithValue("@period", semesterValue);
+                        viewPerformance.Parameters.AddWithValue("@month", MonthValue);
 
                         // Use SqlDataAdapter to fill the DataTable
-                        using (SqlDataAdapter adapter = new SqlDataAdapter(viewPerformance)) 
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(viewPerformance))
                         //creates a new sql data adapter object
                         //which is used to fill the datatable with the results of the sql command
                         //simply put , it is used to execute the command and fill the datatable with the results
@@ -70,14 +69,14 @@ namespace ms3
                         }
 
                         // 2. Bind the DataTable to the GridView in the ASPX page
-                        PerformanceGridView.DataSource = dt;
-                        PerformanceGridView.DataBind();
+                        DeductionGridView.DataSource = dt;
+                        DeductionGridView.DataBind();
 
                         if (dt.Rows.Count == 0)
                         {
                             // No records found for the given semester
                             // colour is blue using html
-                            litMessage.Text = "<p style='color:blue;'>No performance records found for semester: "+ semesterValue + ".</p>";
+                            litMessage.Text = "<p style='color:blue;'>No deduction records caused by attendance found for month " + MonthValue + ".</p>";
                         }
                     }
                     catch (Exception ex)

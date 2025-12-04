@@ -1,10 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MyAttendance.aspx.cs" Inherits="ms3.MyAttendance" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Last_month_payroll.aspx.cs" Inherits="ms3.Last_month_payroll" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Retrieve Attendance</title>
+    <title>Last Month Payroll</title>
     <style>
         /* Base styles for full height and consistent font (Matching previous files) */
         html, body {
@@ -42,25 +42,25 @@
             font-size: 1.8em;
         }
 
-        /* --- GridView Styling (Attendance-grid) --- */
-        .Attendance-grid {
+        /* --- GridView Styling (Payrol-grid) --- */
+        .Payrol-grid {
             width: 100%; /* Takes full width of the input-container */
             border-collapse: collapse;
             margin-top: 20px;
         }
-        .Attendance-grid th {
+        .Payrol-grid th {
             background-color: #007bff;
             color: white;
             padding: 10px;
             border: 1px solid #ccc;
             text-align: center;
         }
-        .Attendance-grid td {
+        .Payrol-grid td {
             padding: 8px;
             border: 1px solid #eee; /* Lighter border for data rows */
             text-align: center;
         }
-        .Attendance-grid tr:nth-child(even) {
+        .Payrol-grid tr:nth-child(even) {
             background-color: #f9f9f9; /* Zebra striping for readability */
         }
         
@@ -68,43 +68,25 @@
         .message {
             margin-top: 15px;
             font-weight: bold;
-            margin-bottom: 20px; /* Added spacing above the button */
-        }
-
-        /* --- Button Styling (Copied for consistency) --- */
-        .input-container asp\:Button {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 1em;
-            transition: background-color 0.2s;
-        }
-
-        .input-container asp\:Button:hover {
-            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
         <div class="input-container">
-            <h1 class="main-title">My Attendance Records</h1>
+            <h1 class="main-title">Last Month's Payroll Details</h1>
 
-            <asp:GridView ID="AttendanceGridView" runat="server" 
+            <asp:GridView ID="PayrollGridView" runat="server" 
                 AutoGenerateColumns="true" 
-                CssClass="Attendance-grid" 
-                EmptyDataText="No Attendance records found for this Month." />
-            
+                CssClass="Payrol-grid" 
+                EmptyDataText="No Payrol records found for last month." />
+                             <asp:Button ID="HomeButton" runat="server" Text="Go to Home Page" OnClick="HomeButton_Click" />
+
             <!-- Use the <div> wrapper for the Literal control to apply 'message' style -->
             <div class="message">
                 <asp:Literal ID="litMessage" runat="server"></asp:Literal>
-            </div>
 
-            <!-- New Home Button -->
-            <asp:Button ID="HomeButton" runat="server" Text="Go to Home Page" OnClick="HomeButton_Click" />
+            </div>
         </div>
     </form>
 </body>

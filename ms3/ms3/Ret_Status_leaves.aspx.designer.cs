@@ -11,7 +11,7 @@ namespace ms3
 {
 
 
-    public partial class MyAttendance
+    public partial class Ret_Status_leaves
     {
 
         /// <summary>
@@ -24,13 +24,13 @@ namespace ms3
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// AttendanceGridView control.
+        /// LeavesGridView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView AttendanceGridView;
+        protected global::System.Web.UI.WebControls.GridView LeavesGridView;
 
         /// <summary>
         /// litMessage control.

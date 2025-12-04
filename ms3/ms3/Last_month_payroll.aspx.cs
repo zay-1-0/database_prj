@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
 using System.Web;
 using System.Web.Configuration;
 using System.Web.UI;
@@ -11,52 +10,34 @@ using System.Web.UI.WebControls;
 
 namespace ms3
 {
-    public partial class MyperformanceView : System.Web.UI.Page
+    public partial class Last_month_payroll : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-        }
-
-        protected void GetTable_Click(object sender, EventArgs e)
-        {
-            string semesterValue = Semester.Text; // Get the semester input from the TextBox
-
-            // Input validation
-            if (semesterValue.Length==0) //makes sure the string is not empty
-            {
-                //makes the colour of the 
-                litMessage.Text = "<p> Please enter a semester value (e.g., W24).</p>"; 
-                return; //returns so it doesnt continue executing the rest of the code
-            }
-
-            // Ensure Employee ID is available
-            //if hes not available the code will not run
             if (Session["Employee_id"] == null)
             {
                 litMessage.Text = "<p style='color:red;'>Error: Employee session ID not found. Please log in again.</p>";
                 return;
             }
 
-            // Database connection setup
             string connstr = WebConfigurationManager.ConnectionStrings["UniHR_DB"].ToString();
-            string sqlQuery = "SELECT * FROM dbo.MyPerformance(@EmployeeID, @period)";
+            string sqlQuery = "SELECT * FROM dbo.Last_month_payroll(@EmployeeID)";
 
-            // DataTable to hold the results
+
             DataTable dt = new DataTable();
 
             using (SqlConnection conn = new SqlConnection(connstr)) //opens a connection to the database
             {
-                using (SqlCommand viewPerformance = new SqlCommand(sqlQuery, conn)) //creates a new sql command object
+                using (SqlCommand viewPayroll = new SqlCommand(sqlQuery, conn)) //creates a new sql command object
                 {
                     try
                     {
                         // Add parameters securely
-                        viewPerformance.Parameters.AddWithValue("@EmployeeID", Session["Employee_id"]);
-                        viewPerformance.Parameters.AddWithValue("@period", semesterValue);
+                        viewPayroll.Parameters.AddWithValue("@EmployeeID", Session["Employee_id"]);
+
 
                         // Use SqlDataAdapter to fill the DataTable
-                        using (SqlDataAdapter adapter = new SqlDataAdapter(viewPerformance)) 
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(viewPayroll))
                         //creates a new sql data adapter object
                         //which is used to fill the datatable with the results of the sql command
                         //simply put , it is used to execute the command and fill the datatable with the results
@@ -70,14 +51,14 @@ namespace ms3
                         }
 
                         // 2. Bind the DataTable to the GridView in the ASPX page
-                        PerformanceGridView.DataSource = dt;
-                        PerformanceGridView.DataBind();
+                        PayrollGridView.DataSource = dt;
+                        PayrollGridView.DataBind();
 
                         if (dt.Rows.Count == 0)
                         {
-                            // No records found for the given semester
+                            // No records found for the given month
                             // colour is blue using html
-                            litMessage.Text = "<p style='color:blue;'>No performance records found for semester: "+ semesterValue + ".</p>";
+                            litMessage.Text = "<p style='color:blue;'>No Payroll records found last month: .</p>";
                         }
                     }
                     catch (Exception ex)

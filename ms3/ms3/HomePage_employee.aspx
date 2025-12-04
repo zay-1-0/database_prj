@@ -51,15 +51,15 @@
             <%-- The <br /> tags can be replaced with CSS margins for better spacing --%>
             <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Retrieve my performance" Width="275px" />
             <br />
-            <asp:Button ID="Button2" runat="server" Text="Retrieve My attendance records" Width="275px" />
+            <asp:Button ID="Button2" runat="server" Text="Retrieve My attendance records" Width="275px" OnClick="Button2_Click" />
             <br />
-            <asp:Button ID="Button3" runat="server" Text="Retrieve last month’s payroll " Width="275px" />
+            <asp:Button ID="Button3" runat="server" Text="Retrieve last month’s payroll " Width="275px" OnClick="Button3_Click" />
             <br />
-            <asp:Button ID="Button4" runat="server" Text="Fetch all attendance deductions" OnClick="Button4_Click" Width="275px" />
+            <asp:Button ID="Button4" runat="server" Text="Fetch all attendance deductions" OnClick="fetchDed" Width="275px" />
             <br />
             <asp:Button ID="Button5" runat="server" Text="Apply for an annual leave" OnClick="Button4_Click" Width="275px" />
             <br />
-            <asp:Button ID="Button6" runat="server" Text="Status of annual and accidental leaves" OnClick="Button4_Click" Width="275px" />
+            <asp:Button ID="Button6" runat="server" Text="Status of annual and accidental leaves" OnClick="Button5_Click" Width="275px" style="height: 26px" />
         </div>
     </form>
 </body>
