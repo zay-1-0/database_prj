@@ -22,19 +22,17 @@ namespace ms3
 
         protected void goToAdminHomePage(object sender, EventArgs e)
         {
-            Response.Redirect("Admin_HomePage.aspx");
+            Response.Redirect("AdminHomePage.aspx");
         }
 
         private void loadMedidcalData()
         {
             try
             {
-                string connStr = WebConfigurationManager
-                                 .ConnectionStrings["UniHR_DB"]
-                                 .ConnectionString;
+                string connStr = WebConfigurationManager.ConnectionStrings["UniHR_DB"].ToString();
                 using (SqlConnection conn = new SqlConnection(connStr))
                 {
-                    string query = "SELECT * allRejectedMedicals";
+                    string query = "SELECT * from allRejectedMedicals";
                     SqlCommand cmd = new SqlCommand(query, conn);
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();

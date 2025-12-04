@@ -22,7 +22,7 @@ namespace ms3
 
         protected void goToAdminHomePage(object sender, EventArgs e)
         {
-            Response.Redirect("Admin_HomePage.aspx");
+            Response.Redirect("AdminHomePage.aspx");
         }
 
         private void loadEmployeeData()
@@ -30,9 +30,7 @@ namespace ms3
             try
             {
 
-                string connStr = WebConfigurationManager
-                                 .ConnectionStrings["UniHR_DB"]
-                                 .ConnectionString;
+                string connStr = WebConfigurationManager.ConnectionStrings["UniHR_DB"].ToString();
 
                 using (SqlConnection conn = new SqlConnection(connStr))
                 {
