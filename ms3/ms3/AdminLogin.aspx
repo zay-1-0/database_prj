@@ -1,4 +1,4 @@
-﻿a<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="ms3.Login" %>
+﻿a<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminLogin.aspx.cs" Inherits="ms3.AdminLogin" %>
 
 <!DOCTYPE html>
 
@@ -104,3 +104,4 @@
     </form>
 </body>
 </html>
+

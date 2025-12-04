@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="AddOfficialHoliday.aspx" />
     <Content Include="AdminHomePage.aspx" />
+    <Content Include="AdminLogin.aspx" />
     <Content Include="Admin_Emplyee_details.aspx" />
     <Content Include="Department_employee_count.aspx" />
     <Content Include="Employees_yesterday_Attendance.aspx" />
@@ -95,6 +96,13 @@
     </Compile>
     <Compile Include="AdminHomePage.aspx.designer.cs">
       <DependentUpon>AdminHomePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminLogin.aspx.cs">
+      <DependentUpon>AdminLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminLogin.aspx.designer.cs">
+      <DependentUpon>AdminLogin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin_Emplyee_details.aspx.cs">
       <DependentUpon>Admin_Emplyee_details.aspx</DependentUpon>
