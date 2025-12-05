@@ -31,6 +31,7 @@
         <br />
 
         <asp:DropDownList ID="ddlEmployees" runat="server" /><br />
+              <asp:Button ID="HomeButton" runat="server" Text="Go to Home Page" OnClick="HomeButton_Click" />
 
         </div>
 

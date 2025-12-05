@@ -67,6 +67,11 @@
 
             <!-- SUBMIT BUTTON -->
             <asp:Button ID="Acc_Submit" runat="server" Text="Submit" CssClass="btn-submit" OnClick="Acc_Submit_Click" />
+
+
+
+             <asp:Literal ID="litMessage" runat="server"></asp:Literal>
+     <asp:Button ID="HomeButton" runat="server" Text="Go to Home Page" OnClick="HomeButton_Click" />
         </div>
     </form>
 </body>

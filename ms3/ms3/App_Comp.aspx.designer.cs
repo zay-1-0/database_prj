@@ -30,7 +30,7 @@ namespace ms3
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Comp_Date;
+        protected global::System.Web.UI.WebControls.TextBox Comp_Date;
 
         /// <summary>
         /// Reason control.
@@ -39,7 +39,7 @@ namespace ms3
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Reason;
+        protected global::System.Web.UI.WebControls.TextBox Reason;
 
         /// <summary>
         /// Org_date control.
@@ -48,7 +48,7 @@ namespace ms3
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Org_date;
+        protected global::System.Web.UI.WebControls.TextBox Org_date;
 
         /// <summary>
         /// Rep_Emp control.
@@ -57,7 +57,7 @@ namespace ms3
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Rep_Emp;
+        protected global::System.Web.UI.WebControls.DropDownList Rep_Emp;
 
         /// <summary>
         /// Comp_Submit control.
@@ -67,5 +67,23 @@ namespace ms3
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Comp_Submit;
+
+        /// <summary>
+        /// litMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litMessage;
+
+        /// <summary>
+        /// HomeButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button HomeButton;
     }
 }

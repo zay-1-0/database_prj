@@ -60,6 +60,8 @@
 
 
         <asp:Label ID="lblMessage" runat="server" ForeColor="Green"></asp:Label>
+          <asp:Button ID="HomeButton" runat="server" Text="Go to Home Page" OnClick="HomeButton_Click" />
+
         </div>
     </form>
 </body>

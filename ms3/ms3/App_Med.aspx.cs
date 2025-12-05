@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Web;
 using System.Web.Configuration;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace ms3
 {
@@ -15,50 +10,98 @@ namespace ms3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["Employee_ID"] == null)
+            {
+                Response.Redirect("EmpLogin.aspx");
+            }
         }
 
         protected void Med_Submit_Click(object sender, EventArgs e)
         {
+            // Validation
+            if (string.IsNullOrEmpty(txtStart.Text) || string.IsNullOrEmpty(txtEnd.Text))
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "Error",
+                    "alert('Please enter both start and end dates.');", true);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(ddlType.SelectedValue))
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "Error",
+                    "alert('Please select a medical type.');", true);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtFileName.Text))
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "Error",
+                    "alert('Please enter the file name.');", true);
+                return;
+            }
+
             string connStr = WebConfigurationManager.ConnectionStrings["UniHR_DB"].ToString();
 
-            DateTime start = DateTime.Parse(Start.Text);
-            DateTime end = DateTime.Parse(End.Text);
-            String type = Type.Text;
-            bool insurance=Insurance.Text=="1";
-            String dis_det=Dis_Det.Text;
-            String doc_des=Doc_Desc.Text;
-            String file_name=F_name.Text;
+            DateTime start = DateTime.Parse(txtStart.Text);
+            DateTime end = DateTime.Parse(txtEnd.Text);
+            string type = ddlType.SelectedValue;
+            bool insurance = chkInsurance.Checked;
+            string disability = txtDisability.Text;
+            string docDesc = txtDocDesc.Text;
+            string fileName = txtFileName.Text;
 
+            int employeeID = Convert.ToInt32(Session["Employee_ID"]);
 
             using (SqlConnection conn = new SqlConnection(connStr))
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand
-                {
-                    Connection = conn,
-                    CommandType = CommandType.StoredProcedure
-                };
+                SqlCommand cmd = new SqlCommand("Submit_medical", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.CommandText = "Submit_medical";
-
-                cmd.Parameters.AddWithValue("@employee_ID", Session["Employee_ID"]);
+                cmd.Parameters.AddWithValue("@employee_ID", employeeID);
                 cmd.Parameters.AddWithValue("@start_date", start);
                 cmd.Parameters.AddWithValue("@end_date", end);
-                cmd.Parameters.AddWithValue("@type", type);
-                cmd.Parameters.AddWithValue("@insurance_bit", insurance);
-                cmd.Parameters.AddWithValue("@disability_details", dis_det);
-                cmd.Parameters.AddWithValue("@document_description", doc_des);
-                cmd.Parameters.AddWithValue("@file_name", file_name);
-
-
+                cmd.Parameters.AddWithValue("@medical_type", type);
+                cmd.Parameters.AddWithValue("@insurance_status", insurance);
+                cmd.Parameters.AddWithValue("@disability_details", disability);
+                cmd.Parameters.AddWithValue("@document_description", docDesc);
+                cmd.Parameters.AddWithValue("@file_name", fileName);
 
                 cmd.ExecuteNonQuery();
+            }
 
-                ClientScript.RegisterStartupScript(this.GetType(),
-                    "Success",
-                    "alert('Accidental leave submitted successfully!');",
-                    true);
+            ClientScript.RegisterStartupScript(this.GetType(), "Success",
+                "alert('Medical leave submitted successfully!');", true);
+        }
+
+        protected void HomeButton_Click(object sender, EventArgs e)
+        {
+            int employeeID = Convert.ToInt32(Session["Employee_ID"]);
+
+            string connStr = WebConfigurationManager.ConnectionStrings["UniHR_DB"].ToString();
+
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                conn.Open();
+
+                // Check if employee is part of upper board roles
+                SqlCommand cmdRole = new SqlCommand(
+                    @"SELECT COUNT(*) 
+              FROM Employee_Role 
+              WHERE emp_ID = @EmpID 
+                AND role_name IN ('Dean','Vice Dean','President')", conn);
+                cmdRole.Parameters.AddWithValue("@EmpID", employeeID);
+
+                int roleCount = (int)cmdRole.ExecuteScalar();
+
+                if (roleCount > 0)
+                {
+                    Response.Redirect("Employee_Home_Page(Upperboard).aspx");
+                }
+                else
+                {
+                    Response.Redirect("HomePage_employee.aspx");
+                }
             }
         }
     }

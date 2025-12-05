@@ -11,7 +11,7 @@ namespace ms3
 {
 
 
-    public partial class WebForm1
+    public partial class EmpLogin
     {
 
         /// <summary>

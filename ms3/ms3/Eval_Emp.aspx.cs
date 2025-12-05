@@ -59,8 +59,9 @@ namespace ms3
             ddlEmployees.Items.Insert(0, new ListItem("--Select Employee--", "0"));
         }
 
-
-
-
+        protected void HomeButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Employee_Home_Page(Upperboard).aspx");
+        }
     }
 }

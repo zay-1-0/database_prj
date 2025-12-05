@@ -134,5 +134,10 @@ namespace ms3
                 cmd.ExecuteNonQuery();
             }
         }
+
+        protected void HomeButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Employee_Home_Page(Upperboard).aspx");
+        }
     }
 }
