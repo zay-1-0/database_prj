@@ -54,6 +54,7 @@ namespace ms3
                     ON E.employee_id = COALESCE(AL.emp_ID, UL.Emp_ID)
                 WHERE EA.Emp1_ID = @ApproverID
                   AND EA.status = 'Pending'
+                  AND L.final_approval_status='Pending'
                   AND (AL.request_ID IS NOT NULL OR UL.request_ID IS NOT NULL);
             ", conn))
             {

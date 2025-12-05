@@ -43,7 +43,7 @@ namespace ms3
 
             SqlCommand getRole = new SqlCommand("Select * " +
                 "from Employee_Role " +
-                " where (emp_ID = @EmpID) and (role_name='Dean' or role_name='Vice Dean' or role_name='President')", conn);
+                " where (emp_ID = @EmpID) and (role_name='Dean' or role_name='Vice Dean' or role_name='President' or role_name='Vice President')", conn);
 
             getRole.Parameters.AddWithValue("@EmpID", id);
 
