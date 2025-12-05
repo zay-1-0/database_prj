@@ -132,7 +132,6 @@
             <asp:Label ID="lblEmployee" runat="server" Text="Select Employee:" />
             <asp:DropDownList ID="ddlEmployees" runat="server" CssClass="styled-input"
                 AppendDataBoundItems="true">
-                <asp:ListItem Text="-- Select an Employee --" Value="" />
             </asp:DropDownList>
 
             <!-- Deduction Buttons -->
