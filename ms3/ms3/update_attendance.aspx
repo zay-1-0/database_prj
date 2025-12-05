@@ -4,119 +4,150 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Update Attendance</title>
-    <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-            font-family: 'Poppins', Arial, sans-serif;
-            background-color: #f0f4ff;
-        }
 
+    <style>
         body {
+            font-family: 'Poppins', Arial, sans-serif;
+            background: linear-gradient(135deg, #1E3A8A, #60A5FA);
+            margin: 0;
+            padding: 20px;
             display: flex;
             justify-content: center;
-            align-items: flex-start;
-            padding: 30px;
         }
 
         .container {
             width: 100%;
-            max-width: 900px; /* bigger than before */
-            min-height: 600px; /* taller container */
+            max-width: 700px;
             background-color: #ffffff;
             padding: 40px;
             border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-            box-sizing: border-box;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            animation: fadeIn 1s ease-in-out;
         }
 
         h2 {
             text-align: center;
             color: #1E3A8A;
-            margin-bottom: 35px;
-            font-size: 2.5em; /* bigger heading */
-        }
-
-        .btn-main {
-            width: 100%;
-            background-color: #4a6cf7;
-            border: none;
-            color: white;
-            padding: 15px 0; /* taller button */
-            border-radius: 12px;
-            cursor: pointer;
-            font-size: 18px; /* bigger font */
-            font-weight: bold;
-            margin-top: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .btn-main:hover {
-            background-color: #3b57c4;
-        }
-
-        .form-row {
-            margin: 20px 0; /* more space between fields */
+            margin-bottom: 30px;
+            font-size: 28px;
         }
 
         label {
-            font-weight: bold;
-            color: #1E3A8A;
-            margin-bottom: 10px;
             display: block;
-            font-size: 1.2em; /* bigger labels */
+            font-weight: 600;
+            color: #1E3A8A;
+            margin-bottom: 8px;
         }
 
-        asp\:TextBox, input[type="time"], input[type="text"] {
+        /* Styled Input Fields & Dropdown */
+        .styled-input {
             width: 100%;
-            padding: 14px; /* bigger inputs */
+            padding: 12px;
+            border: 1px solid #60A5FA;
             border-radius: 12px;
-            border: 1px solid #ccc;
-            font-size: 18px; /* bigger font inside inputs */
+            margin-bottom: 20px;
+            font-size: 16px;
+            background-color: #f9fafb;
+            color: #1E3A8A;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             box-sizing: border-box;
         }
 
-        .time-pair {
-            display: flex;
-            gap: 15px; /* more space between check-in/check-out */
+        .styled-input:hover,
+        .styled-input:focus {
+            border-color: #1E3A8A;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            outline: none;
         }
 
-        .time-pair asp\:TextBox {
+        /* Buttons */
+        .btn {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 15px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            background: linear-gradient(90deg, #1E3A8A, #60A5FA);
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn:hover {
+            background: linear-gradient(90deg, #60A5FA, #1E3A8A);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .btn-back {
+            background: #FACC15;
+            margin-bottom: 30px;
+        }
+
+        .btn-back:hover {
+            background: #eab308;
+        }
+
+        /* Check-in/Check-out pair */
+        .time-pair {
+            display: flex;
+            gap: 15px;
+        }
+
+        .time-pair .styled-input {
             flex: 1;
         }
 
         #WarningLabel {
-            text-align: center;
-            font-weight: bold;
-            color: red;
+            display: block;
             margin-top: 20px;
-            font-size: 1.2em;
+            font-weight: bold;
+            text-align: center;
+            color: #dc2626;
+            font-size: 16px;
         }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
     </style>
 </head>
+
 <body>
     <form id="form1" runat="server">
         <div class="container">
-            <asp:Button ID="backButton" runat="server" OnClick="goToAdminHomePage" Text="⟵ Back" CssClass="btn-main" />
+
+            <!-- BACK BUTTON -->
+            <asp:Button ID="backButton" runat="server" Text="⟵ Back"
+                CssClass="btn btn-back" OnClick="goToAdminHomePage" />
 
             <h2>Update Attendance</h2>
 
-            <div class="form-row">
-                <label for="emp_id">Employee ID</label>
-                <asp:TextBox ID="emp_id" runat="server"></asp:TextBox>
+            <!-- Employee Selection (NOW A DROPDOWN LIKE REFERENCE) -->
+            <label for="emp_id">Select Employee</label>
+            <asp:DropDownList ID="emp_id" runat="server" CssClass="styled-input" AppendDataBoundItems="true">
+                <asp:ListItem Text="-- Select Employee --" Value="" />
+            </asp:DropDownList>
+
+            <!-- Check-in & Check-out -->
+            <label>Check-in & Check-out Time</label>
+            <div class="time-pair">
+                <asp:TextBox ID="check_in" runat="server" TextMode="Time" CssClass="styled-input"></asp:TextBox>
+                <asp:TextBox ID="Check_out" runat="server" TextMode="Time" CssClass="styled-input"></asp:TextBox>
             </div>
 
-            <div class="form-row">
-                <label>Check-in & Check-out Time</label>
-                <div class="time-pair">
-                    <asp:TextBox ID="check_in" runat="server" TextMode="Time"></asp:TextBox>
-                    <asp:TextBox ID="Check_out" runat="server" TextMode="Time"></asp:TextBox>
-                </div>
-            </div>
+            <!-- Submit button -->
+            <asp:Button ID="Button" runat="server" Text="Update"
+                CssClass="btn" OnClick="updateAttendance" />
 
-            <asp:Button ID="Button" runat="server" OnClick="updateAttendance" Text="Update" CssClass="btn-main" />
+            <asp:Label ID="WarningLabel" runat="server" Text="" Visible="false" />
 
-            <asp:Label ID="WarningLabel" runat="server" Text="" Visible="false"></asp:Label>
         </div>
     </form>
 </body>

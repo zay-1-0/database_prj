@@ -7,64 +7,62 @@
     <style>
         body {
             font-family: 'Poppins', Arial, sans-serif;
-            background: linear-gradient(135deg, #1E3A8A, #60A5FA);
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            background: linear-gradient(135deg, #1E3A8A, #60A5FA);
             display: flex;
             justify-content: center;
+            align-items: center;
             min-height: 100vh;
         }
 
         .container {
-            max-width: 700px; /* Wider container */
-            width: 100%;
             background-color: #ffffff;
-            padding: 50px; /* More padding */
+            padding: 40px;
             border-radius: 20px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            text-align: center;
+            width: 420px;
             animation: fadeIn 1s ease-in-out;
         }
 
         h2 {
-            text-align: center;
             color: #1E3A8A;
-            margin-bottom: 40px; /* More space below heading */
             font-size: 28px;
+            margin-bottom: 30px;
         }
 
-        label, asp\:Label {
+        label {
             display: block;
             font-weight: 600;
             color: #1E3A8A;
-            margin-bottom: 10px; /* More space below labels */
+            margin-bottom: 8px;
+            text-align: left;
         }
 
-        asp\:TextBox {
+        .input-box, .date-input {
             width: 100%;
-            padding: 14px; /* Bigger input padding */
+            padding: 12px;
             border: 1px solid #60A5FA;
             border-radius: 12px;
-            margin-bottom: 25px; /* More space below inputs */
+            margin-bottom: 18px;
             font-size: 16px;
             box-sizing: border-box;
         }
 
         .date-range {
             display: flex;
-            gap: 20px; /* More gap between date inputs */
-            margin-bottom: 30px; /* More space below date inputs */
+            gap: 15px;
         }
 
-        .date-range asp\:TextBox {
+        .date-range .date-input {
             flex: 1;
         }
 
         .btn-main {
             width: 100%;
-            padding: 16px; /* Larger button */
-            margin-top: 15px;
-            margin-bottom: 15px; /* More space between buttons */
-            font-size: 18px; /* Bigger text */
+            padding: 12px;
+            font-size: 16px;
             font-weight: bold;
             border: none;
             border-radius: 12px;
@@ -72,6 +70,7 @@
             background: linear-gradient(90deg, #1E3A8A, #60A5FA);
             color: white;
             transition: all 0.3s ease;
+            margin-top: 10px;
             box-shadow: 0 6px 15px rgba(0,0,0,0.2);
         }
 
@@ -79,6 +78,16 @@
             background: linear-gradient(90deg, #60A5FA, #1E3A8A);
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Yellow Sign Out Style (reused for Back button) */
+        .btn-back {
+            background: #FACC15;
+            color: #1E3A8A;
+        }
+
+        .btn-back:hover {
+            background: #eab308;
         }
 
         #WarningLabel {
@@ -99,17 +108,25 @@
 <body>
     <form id="form1" runat="server">
         <div class="container">
+
+            <!-- Back Button -->
+            <asp:Button ID="BackButton" 
+                        runat="server" 
+                        Text="Back to Home"
+                        CssClass="btn-main btn-back"
+                        OnClick="goToAdminHomePage" />
+
             <h2>Add Official Holiday</h2>
 
             <label for="emp_id">Holiday Name</label>
-            <asp:TextBox ID="emp_id" runat="server"></asp:TextBox>
+            <asp:TextBox ID="emp_id" runat="server" CssClass="input-box" />
 
             <div class="date-range">
-                <asp:TextBox ID="check_in" runat="server" TextMode="Date" />
-                <asp:TextBox ID="Check_out" runat="server" TextMode="Date" />
+                <asp:TextBox ID="check_in" runat="server" TextMode="Date" CssClass="date-input" />
+                <asp:TextBox ID="Check_out" runat="server" TextMode="Date" CssClass="date-input" />
             </div>
 
-            <asp:Button ID="AddButton" runat="server" OnClick="AddHoliday" Text="Add" CssClass="btn-main" />
+            <asp:Button ID="AddButton" runat="server" Text="Add" OnClick="AddHoliday" CssClass="btn-main" />
 
             <asp:Label ID="WarningLabel" runat="server" Text="" />
         </div>

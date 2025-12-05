@@ -1,116 +1,138 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AttendanceTools.aspx.cs" Inherits="ms3.AttendanceTools" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true"
+    CodeBehind="AttendanceTools.aspx.cs"
+    Inherits="ms3.AttendanceTools" %>
 
 <!DOCTYPE html>
-
-
-
-
-
-
-
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Attendance Tools</title>
 
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', Arial, sans-serif;
             margin: 0;
-            background: #f4f4f8;
-        }
-
-        .page-wrapper {
-            min-height: 100vh;
+            padding: 0;
+            background: linear-gradient(135deg, #1E3A8A, #60A5FA);
             display: flex;
             justify-content: center;
             align-items: center;
+            min-height: 100vh;
         }
 
-        .card {
-            background: white;
-            padding: 30px 40px;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            text-align: center;
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            width: 90%;
             max-width: 550px;
-            width: 100%;
+            animation: fadeIn 1s ease-in-out;
+            text-align: center;
         }
 
-        .card h2 {
-            margin-top: 0;
+        h2 {
+            color: #1E3A8A;
+            font-size: 28px;
             margin-bottom: 25px;
-            font-size: 26px;
-            color: #333;
+        }
+
+        .btn-back {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            background: #FACC15;
+            color: #1E3A8A;
+            transition: all 0.3s ease;
+            margin-bottom: 25px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-back:hover {
+            background: #eab308;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
 
         .btn-main {
-            background: #4a6cf7;
+            background: #1E3A8A;
             border: none;
             color: white;
-            padding: 10px 22px;
-            border-radius: 8px;
-            font-size: 15px;
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 16px;
             cursor: pointer;
-            margin: 6px 0;
+            margin: 10px 0;
             width: 100%;
-            transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.2s ease;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
         }
 
         .btn-main:hover {
-            background: #3b57c4;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-            transform: translateY(-1px);
-        }
-
-        .btn-main:active {
-            transform: translateY(1px);
-            box-shadow: none;
+            background: #274bb8;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.25);
         }
 
         .small-note {
-            margin-top: 15px;
-            font-size: 12px;
-            color: #777;
+            margin-top: 20px;
+            font-size: 13px;
+            color: #555;
         }
 
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
+
 <body>
     <form id="form2" runat="server">
-        <div class="page-wrapper">
-            <div class="card">
-                <h2>Attendance Maintenance Tools</h2>
 
-                <asp:Button ID="btnGoRemoveHoliday" runat="server"
-                    Text="Remove Attendance on Official Holidays"
-                    CssClass="btn-main"
-                    OnClick="btnGoRemoveHoliday_Click" />
+        <div class="container">
 
-                <asp:Button ID="btnGoRemoveDayOff" runat="server"
-                    Text="Remove Unattended Day Off (Current Month)"
-                    CssClass="btn-main"
-                    OnClick="btnGoRemoveDayOff_Click" />
+            <asp:Button ID="BackButton" runat="server"
+                Text="Back to Home"
+                CssClass="btn-back"
+                OnClick="GoBack" />
 
-                <asp:Button ID="btnGoRemoveApprovedLeaves" runat="server"
-                    Text="Remove Approved Leaves from Attendance"
-                    CssClass="btn-main"
-                    OnClick="btnGoRemoveApprovedLeaves_Click" />
+            <h2>Attendance Maintenance Tools</h2>
 
-                <asp:Button ID="btnGoReplaceEmployee" runat="server"
-                    Text="Replace One Employee with Another"
-                    CssClass="btn-main"
-                    OnClick="btnGoReplaceEmployee_Click" />
+            <asp:Button ID="btnGoRemoveHoliday" runat="server"
+                Text="Remove Attendance on Official Holidays"
+                CssClass="btn-main"
+                OnClick="btnGoRemoveHoliday_Click" />
 
-                <asp:Button ID="btnGoUpdateEmploymentStatus" runat="server"
-                    Text="Update Employment Status for Employee"
-                    CssClass="btn-main"
-                    OnClick="btnGoUpdateEmploymentStatus_Click" />
+            <asp:Button ID="btnGoRemoveDayOff" runat="server"
+                Text="Remove Unattended Day Off (Current Month)"
+                CssClass="btn-main"
+                OnClick="btnGoRemoveDayOff_Click" />
 
-                <div class="small-note">
-                    Use these tools to clean and update attendance and employment status.
-                </div>
+            <asp:Button ID="btnGoRemoveApprovedLeaves" runat="server"
+                Text="Remove Approved Leaves from Attendance"
+                CssClass="btn-main"
+                OnClick="btnGoRemoveApprovedLeaves_Click" />
+
+            <asp:Button ID="btnGoReplaceEmployee" runat="server"
+                Text="Replace One Employee with Another"
+                CssClass="btn-main"
+                OnClick="btnGoReplaceEmployee_Click" />
+
+            <asp:Button ID="btnGoUpdateEmploymentStatus" runat="server"
+                Text="Update Employment Status for Employee"
+                CssClass="btn-main"
+                OnClick="btnGoUpdateEmploymentStatus_Click" />
+
+            <div class="small-note">
+                Use these tools to clean and update attendance and employment status.
             </div>
+
         </div>
+
     </form>
 </body>
 </html>

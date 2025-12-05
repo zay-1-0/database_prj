@@ -48,5 +48,10 @@ namespace ms3
                 LabelInfo.Text = "Error: " + ex.Message;
             }
         }
+
+        protected void GoBack(object sender, EventArgs e)
+        {
+            Response.Redirect("AdminHomePage.aspx");
+        }
     }
 }

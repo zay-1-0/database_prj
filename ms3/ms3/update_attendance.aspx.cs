@@ -14,10 +14,42 @@ namespace ms3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                BindEmployeesDropdown();
+            }
         }
         protected void goToAdminHomePage(object sender, EventArgs e)
         {
             Response.Redirect("AdminHomePage.aspx");
+        }
+
+        private void BindEmployeesDropdown()
+        {
+            string connStr = WebConfigurationManager.ConnectionStrings["UniHR_DB"].ToString();
+
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+
+                string query = @"
+            SELECT 
+                employee_id, 
+                first_name + ' ' + last_name + ' (ID: ' + CAST(employee_id AS VARCHAR) + ')' AS DisplayText
+            FROM dbo.Employee";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                conn.Open();
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    emp_id.DataSource = reader;
+                    emp_id.DataTextField = "DisplayText";
+                    emp_id.DataValueField = "employee_id";
+                    emp_id.DataBind();
+                }
+            }
+
+            emp_id.Items.Insert(0, new ListItem("--Select Employee--", "0"));
         }
         protected void updateAttendance(object sender, EventArgs e)
         {

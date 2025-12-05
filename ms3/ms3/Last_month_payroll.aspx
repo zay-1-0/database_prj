@@ -1,92 +1,119 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Last_month_payroll.aspx.cs" Inherits="ms3.Last_month_payroll" %>
 
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Last Month Payroll</title>
+
     <style>
-        /* Base styles for full height and consistent font (Matching previous files) */
-        html, body {
-            height: 100%;
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            background: linear-gradient(135deg, #1E3A8A, #60A5FA);
             margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            background-color: #f0f2f5;
-        }
-
-        /* Flexbox for vertical and horizontal centering of the form */
-        #form1 {
-            height: 100%;
+            padding: 20px;
             display: flex;
-            justify-content: center; /* Center horizontally */
-            align-items: center; /* Center vertically */
+            justify-content: center;
         }
 
-        /* Style for the central container holding the controls (The 'middle box') */
-        .input-container {
-            background-color: white;
+        .container {
+            width: 100%;
+            max-width: 950px;
+            background-color: #ffffff;
             padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            width: 80%; /* Use relative width for larger content */
-            max-width: 900px; /* Cap the max width on large screens */
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            animation: fadeIn 1s ease-in-out;
             text-align: center;
         }
 
-        /* --- Title Styling --- */
-        .main-title {
-            margin-top: 0;
+        h1 {
+            color: #1E3A8A;
+            font-size: 32px;
             margin-bottom: 25px;
-            color: #1a1a1a;
-            font-size: 1.8em;
         }
 
-        /* --- GridView Styling (Payrol-grid) --- */
+        /* GridView Styling */
         .Payrol-grid {
-            width: 100%; /* Takes full width of the input-container */
+            width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
+            font-size: 15px;
         }
+
         .Payrol-grid th {
-            background-color: #007bff;
+            background-color: #1E3A8A;
             color: white;
+            padding: 12px;
+            border: 1px solid #ccc;
+        }
+
+        .Payrol-grid td {
             padding: 10px;
             border: 1px solid #ccc;
+            background-color: #f9fafb;
             text-align: center;
         }
-        .Payrol-grid td {
-            padding: 8px;
-            border: 1px solid #eee; /* Lighter border for data rows */
-            text-align: center;
-        }
+
         .Payrol-grid tr:nth-child(even) {
-            background-color: #f9f9f9; /* Zebra striping for readability */
+            background-color: #eef3ff;
         }
-        
-        /* Style for the literal messages */
+
+        /* Message Styling */
         .message {
-            margin-top: 15px;
+            margin-top: 20px;
             font-weight: bold;
+            color: #1E3A8A;
+        }
+
+        /* Buttons */
+        .btn {
+            width: 60%;
+            padding: 14px;
+            margin-top: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            background: #FACC15;
+            color: #1E3A8A;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn:hover {
+            background: #eab308;
+            transform: translateY(-3px);
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
+
 <body>
     <form id="form1" runat="server">
-        <div class="input-container">
-            <h1 class="main-title">Last Month's Payroll Details</h1>
+        <div class="container">
 
-            <asp:GridView ID="PayrollGridView" runat="server" 
-                AutoGenerateColumns="true" 
-                CssClass="Payrol-grid" 
-                EmptyDataText="No Payrol records found for last month." />
-                             <asp:Button ID="HomeButton" runat="server" Text="Go to Home Page" OnClick="HomeButton_Click" />
+            <h1>Last Month's Payroll Details</h1>
 
-            <!-- Use the <div> wrapper for the Literal control to apply 'message' style -->
+            <asp:GridView ID="PayrollGridView" runat="server"
+                AutoGenerateColumns="true"
+                CssClass="Payrol-grid"
+                EmptyDataText="No Payroll records found for last month.">
+            </asp:GridView>
+
+            <!-- HOME Button -->
+            <asp:Button ID="HomeButton" runat="server" Text="Go to Home Page"
+                CssClass="btn" OnClick="HomeButton_Click" />
+
             <div class="message">
                 <asp:Literal ID="litMessage" runat="server"></asp:Literal>
-
             </div>
+
         </div>
     </form>
 </body>

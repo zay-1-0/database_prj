@@ -52,5 +52,11 @@ namespace ms3
                 LabelInfoPerf.Text = "Error loading performance data: " + ex.Message;
             }
         }
+
+
+        protected void GoBack(object sender, EventArgs e)
+        {
+            Response.Redirect("AdminHomePage.aspx");
+        }
     }
 }

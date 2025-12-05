@@ -4,8 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Employee Deductions and Payroll</title>
+
     <style>
-        /* Body styling */
         body {
             font-family: 'Poppins', Arial, sans-serif;
             background: linear-gradient(135deg, #1E3A8A, #60A5FA);
@@ -15,7 +15,6 @@
             justify-content: center;
         }
 
-        /* Main container */
         .container {
             max-width: 700px;
             width: 100%;
@@ -26,7 +25,6 @@
             animation: fadeIn 1s ease-in-out;
         }
 
-        /* Heading */
         h2 {
             text-align: center;
             color: #1E3A8A;
@@ -34,16 +32,15 @@
             font-size: 28px;
         }
 
-        /* Labels */
-        label, asp\:Label {
+        label {
             display: block;
             font-weight: 600;
             color: #1E3A8A;
             margin-bottom: 8px;
         }
 
-        /* DropDownLists and TextBoxes */
-        asp\:DropDownList, asp\:TextBox {
+        /* Style for dropdowns and inputs */
+        .styled-input {
             width: 100%;
             padding: 12px;
             border: 1px solid #60A5FA;
@@ -51,16 +48,14 @@
             margin-bottom: 20px;
             font-size: 16px;
             box-sizing: border-box;
-            transition: all 0.3s ease;
-        }
-
-        asp\:DropDownList.ddl-employee {
             background-color: #f9fafb;
             color: #1E3A8A;
+            transition: all 0.3s ease;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        asp\:DropDownList.ddl-employee:hover, asp\:DropDownList.ddl-employee:focus {
+        .styled-input:hover,
+        .styled-input:focus {
             border-color: #1E3A8A;
             box-shadow: 0 6px 15px rgba(0,0,0,0.2);
             outline: none;
@@ -88,17 +83,14 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
 
-        /* Back button */
         .btn-back {
             background: #FACC15;
             margin-bottom: 30px;
         }
 
-        .btn-back:hover {
-            background: #eab308;
-        }
+        .btn-back:hover { background: #eab308; }
 
-        /* Date range styling */
+        /* Date range container */
         .date-range {
             display: flex;
             gap: 15px;
@@ -106,17 +98,10 @@
             margin-bottom: 20px;
         }
 
-        .date-range asp\:Label {
-            width: 90px;
-            margin-bottom: 0;
-            color: #1E3A8A;
-        }
-
-        .date-range asp\:TextBox {
+        .date-range .styled-input {
             flex: 1;
         }
 
-        /* Message label */
         #lblMessage {
             display: block;
             margin-top: 20px;
@@ -126,7 +111,6 @@
             font-size: 16px;
         }
 
-        /* Fade-in animation */
         @keyframes fadeIn {
             0% { opacity: 0; transform: translateY(-20px); }
             100% { opacity: 1; transform: translateY(0); }
@@ -144,33 +128,34 @@
 
             <h2>Employee Deductions and Monthly Payroll</h2>
 
-            <!-- Improved Select Employee -->
-            <asp:Label ID="lblEmployee" runat="server" Text="Select Employee:" /><br />
-            <asp:DropDownList ID="ddlEmployees" runat="server" CssClass="ddl-employee" 
+            <!-- Employee Selection -->
+            <asp:Label ID="lblEmployee" runat="server" Text="Select Employee:" />
+            <asp:DropDownList ID="ddlEmployees" runat="server" CssClass="styled-input"
                 AppendDataBoundItems="true">
                 <asp:ListItem Text="-- Select an Employee --" Value="" />
-            </asp:DropDownList><br />
+            </asp:DropDownList>
 
             <!-- Deduction Buttons -->
             <asp:Button ID="btnDeductHours" runat="server" Text="Deduct Hours" CssClass="btn"
-                OnClick="btnDeductHours_Click" /><br />
+                OnClick="btnDeductHours_Click" />
             <asp:Button ID="btnDeductDays" runat="server" Text="Deduct Days" CssClass="btn"
-                OnClick="btnDeductDays_Click" /><br />
+                OnClick="btnDeductDays_Click" />
             <asp:Button ID="btnDeductUnpaid" runat="server" Text="Deduct Unpaid" CssClass="btn"
-                OnClick="btnDeductUnpaid_Click" /><br />
+                OnClick="btnDeductUnpaid_Click" />
 
             <!-- Date Range -->
             <div class="date-range">
                 <asp:Label ID="lblFrom" runat="server" Text="From Date:" />
-                <asp:TextBox ID="txtFrom" runat="server" TextMode="Date" />
+                <asp:TextBox ID="txtFrom" runat="server" TextMode="Date" CssClass="styled-input" />
                 <asp:Label ID="lblTo" runat="server" Text="To Date:" />
-                <asp:TextBox ID="txtTo" runat="server" TextMode="Date" />
+                <asp:TextBox ID="txtTo" runat="server" TextMode="Date" CssClass="styled-input" />
             </div>
 
             <asp:Button ID="btnGeneratePayroll" runat="server" Text="Generate Payroll"
-                CssClass="btn" OnClick="btnGeneratePayroll_Click" /><br />
+                CssClass="btn" OnClick="btnGeneratePayroll_Click" />
 
             <asp:Label ID="lblMessage" runat="server" Text="" />
+
         </div>
     </form>
 </body>

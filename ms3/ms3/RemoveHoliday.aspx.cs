@@ -32,5 +32,10 @@ namespace University_HR_ManagementSystem
                 }
             }
         }
+
+        protected void GoBack(object sender, EventArgs e)
+        {
+            Response.Redirect("AttendanceTools.aspx");
+        }
     }
 }

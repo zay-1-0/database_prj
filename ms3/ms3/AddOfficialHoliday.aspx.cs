@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -18,16 +18,15 @@ namespace ms3
 
         protected void AddHoliday(object sender, EventArgs e)
         {
-            string connectionString = WebConfigurationManager.ConnectionStrings["UniHR_DB"].ToString(); // Replace with your actual connection string
+            string connectionString = WebConfigurationManager.ConnectionStrings["UniHR_DB"].ToString();
 
             try
             {
-                // Get values from textboxes
-                string holidayName = emp_id.Text.Trim(); // Note: TextBox ID suggests it's for holiday name
+                // 1. Read and validate inputs
+                string holidayName = emp_id.Text.Trim();
                 string fromDateText = check_in.Text.Trim();
                 string toDateText = Check_out.Text.Trim();
 
-                // Validate inputs
                 if (string.IsNullOrEmpty(holidayName))
                 {
                     ShowWarning("Please enter a Holiday Name.");
@@ -40,18 +39,15 @@ namespace ms3
                     return;
                 }
 
-                DateTime fromDate;
-                DateTime toDate;
-
-                if (!DateTime.TryParse(fromDateText, out fromDate))
+                if (!DateTime.TryParse(fromDateText, out DateTime fromDate))
                 {
-                    ShowWarning("Please enter a valid Start Date (format: MM/DD/YYYY).");
+                    ShowWarning("Please enter a valid Start Date.");
                     return;
                 }
 
-                if (!DateTime.TryParse(toDateText, out toDate))
+                if (!DateTime.TryParse(toDateText, out DateTime toDate))
                 {
-                    ShowWarning("Please enter a valid End Date (format: MM/DD/YYYY).");
+                    ShowWarning("Please enter a valid End Date.");
                     return;
                 }
 
@@ -63,30 +59,46 @@ namespace ms3
 
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
+                    connection.Open();
+
+                    // 2. CHECK IF HOLIDAY TABLE EXISTS
+                    bool tableExists = false;
+
+                    using (SqlCommand checkTable = new SqlCommand(
+                        @"SELECT CASE WHEN OBJECT_ID('Holiday', 'U') IS NOT NULL THEN 1 ELSE 0 END", connection))
+                    {
+                        tableExists = (int)checkTable.ExecuteScalar() == 1;
+                    }
+
+                    // 3. IF TABLE DOES NOT EXIST → CREATE IT
+                    if (!tableExists)
+                    {
+                        // Run Create_Holiday
+                        using (SqlCommand createCmd = new SqlCommand("Create_Holiday", connection))
+                        {
+                            createCmd.CommandType = CommandType.StoredProcedure;
+                            createCmd.ExecuteNonQuery();
+                        }
+                    }
+
+                    // 4. INSERT HOLIDAY USING Add_Holiday PROC
                     using (SqlCommand command = new SqlCommand("Add_Holiday", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        // Add parameters
                         command.Parameters.Add("@holiday_name", SqlDbType.VarChar, 50).Value = holidayName;
                         command.Parameters.Add("@from_date", SqlDbType.Date).Value = fromDate;
                         command.Parameters.Add("@to_date", SqlDbType.Date).Value = toDate;
 
-                      
-
-                        connection.Open();
                         int rowsAffected = command.ExecuteNonQuery();
-
 
                         if (rowsAffected > 0)
                         {
-                            ShowWarning($"Holiday '{holidayName}' added successfully!", false); // false means success, not warning
-                            
+                            ShowWarning($"Holiday '{holidayName}' added successfully!", false);
                         }
-                  
                         else
                         {
-                            ShowWarning("Holiday could not be added. Please check for overlapping dates or contact administrator.");
+                            ShowWarning("Holiday could not be added. It may overlap an existing holiday.");
                         }
                     }
                 }
@@ -96,6 +108,7 @@ namespace ms3
                 ShowWarning($"Error: {ex.Message}");
             }
         }
+
 
         private void ShowWarning(string message, bool isError = true)
         {

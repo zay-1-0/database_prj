@@ -2,11 +2,62 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Web.Configuration;
+using System.Web.UI.WebControls;
 
 namespace ms3
 {
     public partial class ReplaceEmployee : System.Web.UI.Page
     {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                BindEmployeesDropdown();
+            }
+        }
+
+
+
+        private void BindEmployeesDropdown()
+        {
+            string connStr = WebConfigurationManager.ConnectionStrings["UniHR_DB"].ToString();
+
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+
+                string query = @"
+            SELECT 
+                employee_id, 
+                first_name + ' ' + last_name + ' (ID: ' + CAST(employee_id AS VARCHAR) + ')' AS DisplayText
+            FROM dbo.Employee";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                conn.Open();
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    txtEmp1.DataSource = reader;
+                    txtEmp1.DataTextField = "DisplayText";
+                    txtEmp1.DataValueField = "employee_id";
+                    txtEmp1.DataBind();
+                    txtEmp2.DataSource = reader;
+                    txtEmp2.DataTextField = "DisplayText";
+                    txtEmp2.DataValueField = "employee_id";
+                    txtEmp2.DataBind();
+                }
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                  
+                    txtEmp2.DataSource = reader;
+                    txtEmp2.DataTextField = "DisplayText";
+                    txtEmp2.DataValueField = "employee_id";
+                    txtEmp2.DataBind();
+                }
+            }
+
+            
+
+        }
         protected void btnReplace_Click(object sender, EventArgs e)
         {
             lblResult.ForeColor = System.Drawing.Color.Green;
@@ -52,6 +103,11 @@ namespace ms3
                     lblResult.Text = "Error: " + ex.Message;
                 }
             }
+        }
+
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AttendanceTools.aspx");
         }
     }
 }

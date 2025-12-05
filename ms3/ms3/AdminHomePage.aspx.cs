@@ -91,8 +91,10 @@ namespace ms3
 
                         connection.Open();
                         int rowsAffected = command.ExecuteNonQuery();
-
+                        if (rowsAffected > 0) 
                         ShowMessage($"Attendance initiated successfully. {rowsAffected} new attendance record(s) created for today.");
+                        else 
+                        ShowMessage("Attendance has already been initiated for today.");
                     }
                 }
             }
@@ -128,7 +130,7 @@ namespace ms3
 
         protected void GoToYesterdaysAttendance(object sender, EventArgs e)
         {
-            Response.Redirect("YesterdaysAttendance.aspx");
+            Response.Redirect("Employees_yesterday_Attendance.aspx");
         }
     }
 }

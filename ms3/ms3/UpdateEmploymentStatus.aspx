@@ -1,101 +1,137 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UpdateEmploymentStatus.aspx.cs" Inherits="University_HR_ManagementSystem.UpdateEmploymentStatus" %>
 
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Update Employment Status</title>
 
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; background: #f4f4f8; }
-
-        .page-wrapper {
-            min-height: 100vh;
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            background: linear-gradient(135deg, #1E3A8A, #60A5FA);
+            margin: 0;
+            padding: 20px;
             display: flex;
             justify-content: center;
-            align-items: center;
         }
 
-        .card {
-            background: white;
-            padding: 30px 40px;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h2 {
             text-align: center;
-            max-width: 450px;
-            width: 100%;
+            color: #1E3A8A;
+            margin-bottom: 30px;
+            font-size: 28px;
         }
 
-        .card h2 {
-            margin-top: 0;
-            margin-bottom: 20px;
-            font-size: 24px;
-            color: #333;
-        }
-
-        .form-row {
-            margin: 8px 0;
-            text-align: left;
-        }
-
-        .form-row label {
+        label {
             display: block;
-            font-size: 14px;
-            margin-bottom: 4px;
+            font-weight: 600;
+            color: #1E3A8A;
+            margin-bottom: 8px;
         }
 
-        .form-row input {
+        /* Styled input & dropdown */
+        .styled-input {
             width: 100%;
-            padding: 6px 8px;
-            border-radius: 6px;
-            border: 1px solid #ccc;
+            padding: 12px;
+            border: 1px solid #60A5FA;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            background-color: #f9fafb;
+            color: #1E3A8A;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             box-sizing: border-box;
         }
 
-        .btn-main {
-            background: #4a6cf7;
+        .styled-input:hover,
+        .styled-input:focus {
+            border-color: #1E3A8A;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            outline: none;
+        }
+
+        /* Buttons */
+        .btn {
+            width: 100%;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: bold;
             border: none;
-            color: white;
-            padding: 10px 22px;
-            border-radius: 8px;
-            font-size: 15px;
+            border-radius: 12px;
             cursor: pointer;
-            margin-top: 12px;
-            transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.2s ease;
+            background: linear-gradient(90deg, #1E3A8A, #60A5FA);
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            margin-top: 10px;
         }
 
-        .btn-main:hover {
-            background: #3b57c4;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-            transform: translateY(-1px);
+        .btn:hover {
+            background: linear-gradient(90deg, #60A5FA, #1E3A8A);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
 
-        .result-label {
-            margin-top: 15px;
+        /* Back Button */
+        .btn-back {
+            background: #FACC15;
+            margin-bottom: 25px;
+        }
+
+        .btn-back:hover {
+            background: #eab308;
+        }
+
+        #lblResult {
             display: block;
-            font-size: 14px;
+            margin-top: 20px;
+            font-size: 16px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
+
 <body>
     <form id="form1" runat="server">
-        <div class="page-wrapper">
-            <div class="card">
-                <h2>Update Employment Status for Employee</h2>
+        <div class="container">
 
-                <div class="form-row">
-                    <label for="txtEmployeeId">Employee ID:</label>
-                    <asp:TextBox ID="txtEmployeeId" runat="server"></asp:TextBox>
-                </div>
+            <!-- BACK BUTTON -->
+            <asp:Button ID="btnBack" runat="server" Text="⟵ Back"
+                CssClass="btn btn-back" OnClick="btnBack_Click" />
 
-                <asp:Button ID="btnUpdateStatus" runat="server"
-                    Text="Update Status (Active / On Leave)"
-                    CssClass="btn-main"
-                    OnClick="btnUpdateStatus_Click" />
+            <h2>Update Employment Status</h2>
 
-                <asp:Label ID="lblResult" runat="server"
-                    CssClass="result-label"
-                    ForeColor="Green"></asp:Label>
-            </div>
+            <!-- Employee Dropdown -->
+            <label for="txtEmployeeId">Select Employee</label>
+            <asp:DropDownList ID="txtEmployeeId" runat="server" CssClass="styled-input" AppendDataBoundItems="true">
+                <asp:ListItem Text="-- Select Employee --" Value="" />
+            </asp:DropDownList>
+
+            <!-- Update Button -->
+            <asp:Button ID="btnUpdateStatus" runat="server"
+                Text="Update Status (Active / On Leave)"
+                CssClass="btn"
+                OnClick="btnUpdateStatus_Click" />
+
+            <asp:Label ID="lblResult" runat="server" ForeColor="Green"></asp:Label>
+
         </div>
     </form>
 </body>

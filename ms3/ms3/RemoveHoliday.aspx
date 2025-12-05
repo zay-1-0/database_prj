@@ -1,90 +1,119 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="RemoveHoliday.aspx.cs" Inherits="University_HR_ManagementSystem.RemoveHoliday" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true"
+    CodeBehind="RemoveHoliday.aspx.cs"
+    Inherits="University_HR_ManagementSystem.RemoveHoliday" %>
 
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Remove Attendance on Holidays</title>
 
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', Arial, sans-serif;
             margin: 0;
-            background: #f4f4f8;
-        }
-
-        /* Center everything in the page */
-        .page-wrapper {
-            min-height: 100vh; /* full browser height */
+            padding: 0;
+            background: linear-gradient(135deg, #1E3A8A, #60A5FA);
             display: flex;
-            justify-content: center; /* center left–right */
-            align-items: center;    /* center up–down */
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
 
-        /* The white card in the middle */
-        .card {
-            background: white;
-            padding: 30px 40px;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            width: 90%;
+            max-width: 550px;
+            animation: fadeIn 1s ease-in-out;
             text-align: center;
-            max-width: 500px;
+        }
+
+        h2 {
+            color: #1E3A8A;
+            font-size: 28px;
+            margin-bottom: 25px;
+        }
+
+        .btn-back {
             width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            background: #FACC15;
+            color: #1E3A8A;
+            transition: all 0.3s ease;
+            margin-bottom: 25px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
         }
 
-        .card h2 {
-            margin-top: 0;
-            margin-bottom: 20px;
-            font-size: 26px;
-            color: #333;
+        .btn-back:hover {
+            background: #eab308;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
 
-        /* Cool button style */
         .btn-main {
-            background: #4a6cf7;
+            background: #1E3A8A;
             border: none;
             color: white;
-            padding: 10px 22px;
-            border-radius: 8px;
+            padding: 12px;
+            border-radius: 12px;
             font-size: 16px;
             cursor: pointer;
-            transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.2s ease;
+            margin-top: 10px;
+            width: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
         }
 
         .btn-main:hover {
-            background: #3b57c4;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-            transform: translateY(-1px);
+            background: #274bb8;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.25);
         }
 
-        .btn-main:active {
-            transform: translateY(1px);
-            box-shadow: none;
-        }
-
-        /* Result label */
         .result-label {
             margin-top: 20px;
+            font-size: 15px;
             display: block;
-            font-size: 14px;
+            font-weight: bold;
+            color: #16a34a;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
+
 <body>
     <form id="form1" runat="server">
-        <div class="page-wrapper">
-            <div class="card">
-                <h2>Remove Attendance Records on Official Holidays</h2>
 
-                <asp:Button ID="btnRemoveHoliday" runat="server"
-                    Text="Remove Attendance on Holidays"
-                    CssClass="btn-main"
-                    OnClick="btnRemoveHoliday_Click" />
+        <div class="container">
 
-                <asp:Label ID="lblResult" runat="server"
-                    CssClass="result-label"
-                    ForeColor="Green"></asp:Label>
-            </div>
+            <asp:Button ID="BackButton" runat="server"
+                Text="Back to Home"
+                CssClass="btn-back"
+                OnClick="GoBack" />
+
+            <h2>Remove Attendance Records on Official Holidays</h2>
+
+            <asp:Button ID="btnRemoveHoliday" runat="server"
+                Text="Remove Attendance on Holidays"
+                CssClass="btn-main"
+                OnClick="btnRemoveHoliday_Click" />
+
+            <asp:Label ID="lblResult" runat="server"
+                CssClass="result-label"></asp:Label>
+
         </div>
+
     </form>
 </body>
 </html>

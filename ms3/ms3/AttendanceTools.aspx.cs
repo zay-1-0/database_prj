@@ -28,5 +28,11 @@ namespace ms3
         {
             Response.Redirect("UpdateEmploymentStatus.aspx");
         }
+
+        protected void GoBack(object sender, EventArgs e)
+        {
+            Response.Redirect("AdminHomePage.aspx");
+
+        }
     }
 }
