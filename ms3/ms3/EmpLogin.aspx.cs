@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Web;
 using System.Web.Configuration;
 using System.Web.UI;
@@ -40,6 +41,17 @@ namespace ms3
 
             SqlCommand checking = new SqlCommand("SELECT dbo.EmployeeLoginValidation(@EmployeeID, @Password)", conn);
 
+            SqlCommand getRole = new SqlCommand("Select * " +
+                "from Employee_Role " +
+                " where (emp_ID = @EmpID) and (role_name='Dean' or role_name='Vice Dean' or role_name='President')", conn);
+
+            getRole.Parameters.AddWithValue("@EmpID", id);
+
+
+          
+
+            int temp = -100;
+
             checking.Parameters.AddWithValue("@EmployeeID", id);
             checking.Parameters.AddWithValue("@Password", password);
             try
@@ -59,10 +71,11 @@ namespace ms3
 
                 if (isValid == 1)
                 {
+
+                    temp = 1;
                     // Successful Login Logic: Store Session ID, redirect, etc.
                     Session["Employee_id"] = id;
-                    Response.Redirect("HomePage_employee.aspx");
-                    Response.Write("<script>alert('Login Successful!');</script>");
+
                     // Example: Response.Redirect("HomePage.aspx");
                 }
                 else
@@ -81,6 +94,55 @@ namespace ms3
             {
                 conn.Close();
             }
+
+           
+            
+
+            try
+            {
+                conn.Open();
+
+
+                object roleResult = getRole.ExecuteScalar();
+
+
+                // The function should return 1 (Success) or 0 (Failure) (or maybe -1 if INT)
+                int isRole = roleResult != null ? 1 : 0;
+
+                if (isRole == 1 && temp==1)
+                {
+                    // Successful Login Logic: Store Session ID, redirect, etc.
+                    Response.Redirect("Employee_Home_Page(Upperboard).aspx");
+                    Response.Write("<script>alert('Login Successful!');</script>");
+                    // Example: Response.Redirect("HomePage.aspx");
+                }
+                else if(isRole==0 && temp==1)
+                {
+                    Response.Redirect("HomePage_employee.aspx");
+                    Response.Write("<script>alert('Login Successful!');</script>");
+                }
+                else
+                {
+                    Response.Write("<script>alert('Invalid Employee ID or Password.');</script>");
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the exception (ex.Message) instead of displaying it to the user
+                Response.Write("<script>alert('A database error occurred: " + ex.Message + "');</script>");
+            }
+
+            finally
+            {
+                conn.Close();
+            }
+
+
+
+
+
+
+
 
 
 

@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace ms3
 {
-    public partial class HomePage_employee : System.Web.UI.Page
+    public partial class Employee_Home_Page_Upperboard_ : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -18,7 +18,7 @@ namespace ms3
         {
             Response.Redirect("MyperformanceView.aspx");
         }
-        
+
         protected void fetchDed(object sender, EventArgs e)
         {
             Response.Redirect("FetchDeduction_Attendance.aspx");
@@ -47,6 +47,16 @@ namespace ms3
         protected void App_Leave(object sender, EventArgs e)
         {
             Response.Redirect("Leaves.aspx");
+        }
+
+        protected void Eval_Emp1(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Proc_Lev(object sender, EventArgs e)
+        {
+
         }
     }
 }

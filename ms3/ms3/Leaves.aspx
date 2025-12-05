@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Employee Page 2.aspx.cs" Inherits="ms3.Employee_Page_2" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Leaves.aspx.cs" Inherits="ms3.Employee_Page_2" %>
 
 <!DOCTYPE html>
 
@@ -17,6 +17,7 @@
         <asp:Button ID="App_Med" runat="server" Text="Medical Leave" OnClick="App_Med_Click" />
         <asp:Button ID="App_Unp" runat="server" Text="Unpaid Leave" OnClick="App_Unp_Click" />
         <asp:Button ID="App_Comp" runat="server" Text="Compensation Leave" OnClick="App_Comp_Click" />
+        <asp:Button ID="App_Ann" runat="server" Text="Annual Leave" OnClick="App_Ann_Click" />
     </form>
 </body>
 </html>

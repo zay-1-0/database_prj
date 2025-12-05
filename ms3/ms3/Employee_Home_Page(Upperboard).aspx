@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="HomePage_employee.aspx.cs" Inherits="ms3.HomePage_employee" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Employee_Home_Page(Upperboard).aspx.cs" Inherits="ms3.Employee_Home_Page_Upperboard_" %>
 
 <!DOCTYPE html>
 
@@ -60,6 +60,10 @@
             <asp:Button ID="Button5" runat="server" Text="Apply for a Leave" OnClick="App_Leave" Width="275px" />
             <br />
             <asp:Button ID="Button6" runat="server" Text="Status of annual and accidental leaves" OnClick="Button5_Click" Width="275px" style="height: 26px" />
+            <br />
+            <asp:Button ID="App_Rej_Leaves" runat="server" Text="Proccess Pending Leaves" OnClick="Proc_Lev" Width="275px" style="height: 26px" />
+            <br />
+            <asp:Button ID="Eval_Emp" runat="server" Text="Evaluate Employee" OnClick="Eval_Emp1" Width="275px" style="height: 26px" />
         </div>
     </form>
 </body>

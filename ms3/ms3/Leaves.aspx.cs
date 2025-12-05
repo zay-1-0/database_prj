@@ -33,5 +33,10 @@ namespace ms3
         {
             Response.Redirect("App_Comp.aspx");
         }
+
+        protected void App_Ann_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Apply_Annual_leave.aspx");
+        }
     }
 }

@@ -80,9 +80,8 @@
     <Content Include="Dean_Pres_exc.aspx" />
     <Content Include="Department_employee_count.aspx" />
     <Content Include="EmpLogin.aspx" />
-    <Content Include="Employee Home Page%28Normal%29.aspx" />
-    <Content Include="Employee Home Page%28Upperboard%29.aspx" />
-    <Content Include="Employee Page 2.aspx" />
+    <Content Include="Employee_Home_Page%28Upperboard%29.aspx" />
+    <Content Include="Leaves.aspx" />
     <Content Include="Employees_yesterday_Attendance.aspx" />
     <Content Include="FetchDeduction_Attendance.aspx" />
     <Content Include="First_page.aspx" />
@@ -204,26 +203,19 @@
     <Compile Include="EmpLogin.aspx.designer.cs">
       <DependentUpon>EmpLogin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Employee Home Page%28Normal%29.aspx.cs">
-      <DependentUpon>Employee Home Page%28Normal%29.aspx</DependentUpon>
+    <Compile Include="Employee_Home_Page%28Upperboard%29.aspx.cs">
+      <DependentUpon>Employee_Home_Page%28Upperboard%29.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Employee Home Page%28Normal%29.aspx.designer.cs">
-      <DependentUpon>Employee Home Page%28Normal%29.aspx</DependentUpon>
+    <Compile Include="Employee_Home_Page%28Upperboard%29.aspx.designer.cs">
+      <DependentUpon>Employee_Home_Page%28Upperboard%29.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Employee Home Page%28Upperboard%29.aspx.cs">
-      <DependentUpon>Employee Home Page%28Upperboard%29.aspx</DependentUpon>
+    <Compile Include="Leaves.aspx.cs">
+      <DependentUpon>Leaves.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Employee Home Page%28Upperboard%29.aspx.designer.cs">
-      <DependentUpon>Employee Home Page%28Upperboard%29.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Employee Page 2.aspx.cs">
-      <DependentUpon>Employee Page 2.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Employee Page 2.aspx.designer.cs">
-      <DependentUpon>Employee Page 2.aspx</DependentUpon>
+    <Compile Include="Leaves.aspx.designer.cs">
+      <DependentUpon>Leaves.aspx</DependentUpon>
     </Compile>
     <Compile Include="Employees_yesterday_Attendance.aspx.cs">
       <DependentUpon>Employees_yesterday_Attendance.aspx</DependentUpon>
