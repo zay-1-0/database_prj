@@ -86,7 +86,7 @@ namespace ms3
                     @"SELECT COUNT(*) 
               FROM Employee_Role 
               WHERE emp_ID = @EmpID 
-                AND role_name IN ('Dean','Vice Dean','President')", conn);
+                AND role_name IN ('Dean','Vice Dean','President','Vice President')", conn);
                 cmdRole.Parameters.AddWithValue("@EmpID", employeeID);
 
                 int roleCount = (int)cmdRole.ExecuteScalar();

@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
+using System.Configuration;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
-using System.Web.Configuration;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace ms3
 {
@@ -16,52 +10,75 @@ namespace ms3
         {
             if (!IsPostBack)
             {
-
-                BindEmployeesDropdown();
-                
+                LoadEmployees();
             }
         }
 
-
-        private void BindEmployeesDropdown()
+        private void LoadEmployees()
         {
-            string connStr = WebConfigurationManager.ConnectionStrings["UniHR_DB"].ToString();
-            int myEmployeeId = Convert.ToInt32(Session["Employee_ID"]);
+            string connStr = ConfigurationManager.ConnectionStrings["UniHR_DB"].ToString();
 
             using (SqlConnection conn = new SqlConnection(connStr))
             {
-                string query = @"
-            SELECT 
-                E2.employee_id,
-                E2.first_name + ' ' + E2.last_name + ' (ID: ' + CAST(E2.employee_id AS VARCHAR) + ')' AS DisplayText
-            FROM Employee E2
-            WHERE E2.dept_name = (
-                SELECT dept_name 
-                FROM Employee 
-                WHERE employee_id = @MyID
-            );
-        ";
+                string sql = "SELECT employee_id, first_name FROM employee";   // change table/columns if different
 
-                SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@MyID", myEmployeeId);
-
+                SqlCommand cmd = new SqlCommand(sql, conn);
                 conn.Open();
 
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    ddlEmployees.DataSource = reader;
-                    ddlEmployees.DataTextField = "DisplayText";
-                    ddlEmployees.DataValueField = "employee_id";
-                    ddlEmployees.DataBind();
-                }
+                ddlEmployees.DataSource = cmd.ExecuteReader();
+                ddlEmployees.DataTextField = "first_name";
+                ddlEmployees.DataValueField = "employee_id";
+                ddlEmployees.DataBind();
             }
 
-            ddlEmployees.Items.Insert(0, new ListItem("--Select Employee--", "0"));
+            ddlEmployees.Items.Insert(0, "-- Select Employee --");
         }
+
+
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            if (ddlEmployees.SelectedIndex == 0)
+            {
+                Response.Write("<script>alert('Please select an employee.');</script>");
+                return;
+            }
+
+            string employeeID = ddlEmployees.SelectedValue;
+            int rating = int.Parse(ddlRating.SelectedValue);
+            string comment = txtComment.Text.Trim();
+            string semester = ddlSemester.Text.Trim();
+
+            // Validate semester format: S24, F25, W24
+            if (!System.Text.RegularExpressions.Regex.IsMatch(semester, "^[SFW][0-9]{2}$"))
+            {
+                Response.Write("<script>alert('Semester must be in format S24, F25, or W24.');</script>");
+                return;
+            }
+
+            string connStr = ConfigurationManager.ConnectionStrings["UniHR_DB"].ToString();
+
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                SqlCommand cmd = new SqlCommand("Dean_andHR_Evaluation", conn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@employee_ID", employeeID);
+                cmd.Parameters.AddWithValue("@rating", rating);
+                cmd.Parameters.AddWithValue("@comment", comment);
+                cmd.Parameters.AddWithValue("@semester", semester);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+
+            Response.Write("<script>alert('Evaluation submitted successfully!');</script>");
+        }
+
 
         protected void HomeButton_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Employee_Home_Page(Upperboard).aspx");
+            // redirect back to the appropriate page
+            Response.Redirect("Employee_Home_Page(Upperboard).aspx");  // change to your actual homepage
         }
     }
 }
