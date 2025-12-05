@@ -6,87 +6,140 @@
 <head runat="server">
     <title>Leave Status Records</title>
     <style>
-        /* Base styles for full height and consistent font */
+        /* 1. Reset and Base Styles */
         html, body {
             height: 100%;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            background-color: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); /* Cool gradient background */
         }
 
-        /* Flexbox for vertical and horizontal centering of the form */
+        /* 2. Center everything using Flexbox */
         #form1 {
-            height: 100%;
+            min-height: 100%;
             display: flex;
-            justify-content: center; /* Center horizontally */
-            align-items: center; /* Center vertically */
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
         }
 
-        /* Style for the central container holding the controls (The 'middle box') */
-        .input-container {
+        /* 3. The "Card" Container */
+        .card-container {
             background-color: white;
             padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            width: 80%; /* Use relative width for larger content */
-            max-width: 900px; /* Cap the max width on large screens */
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* Deep shadow */
+            width: 80%;
+            max-width: 900px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            overflow: auto;
+        }
+
+        .card-container:hover {
+            transform: translateY(-5px); /* Subtle lift animation */
+        }
+
+        /* 4. Title Styling */
+        .page-title {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 25px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        /* 5. GridView Styling */
+        .modern-grid {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+            text-align: left;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .modern-grid th {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 12px 15px;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.5px;
             text-align: center;
         }
 
-        /* --- Title Styling --- */
-        .main-title {
-            margin-top: 0;
-            margin-bottom: 25px;
-            color: #1a1a1a;
-            font-size: 1.8em;
+        .modern-grid td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #dddddd;
+            color: #555;
+            text-align: center;
         }
 
-        /* --- GridView Styling --- */
-        .leaves-grid {
-            width: 100%; /* Takes full width of the input-container */
-            border-collapse: collapse;
+        .modern-grid tr:nth-of-type(even) {
+            background-color: #f8f9fa;
+        }
+
+        .modern-grid tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* 6. Button Styling */
+        .styled-button {
+            padding: 10px 24px;
+            background-color: #6c757d; /* Secondary gray color for Home */
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(108, 117, 125, 0.2);
+            text-decoration: none;
+            display: inline-block;
             margin-top: 20px;
         }
-        .leaves-grid th {
-            background-color: #007bff;
-            color: white;
-            padding: 10px;
-            border: 1px solid #ccc;
-            text-align: center;
+
+        .styled-button:hover {
+            background-color: #5a6268;
+            box-shadow: 0 6px 12px rgba(108, 117, 125, 0.3);
+            transform: translateY(-2px);
         }
-        .leaves-grid td {
-            padding: 8px;
-            border: 1px solid #eee; /* Lighter border for data rows */
-            text-align: center;
-        }
-        .leaves-grid tr:nth-child(even) {
-            background-color: #f9f9f9; /* Zebra striping for readability */
-        }
-        
-        /* Style for the literal messages */
-        .message {
+
+        /* Message Styling */
+        .status-message {
+            display: block;
             margin-top: 15px;
             font-weight: bold;
+            font-size: 1.1em;
+            color: #333;
         }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div class="input-container">
-            <h1 class="main-title">Submitted Leave Status</h1>
+        <div class="card-container">
+            <h1 class="page-title">Submitted Leave Status</h1>
 
             <asp:GridView ID="LeavesGridView" runat="server" 
                 AutoGenerateColumns="true" 
-                CssClass="leaves-grid" 
+                CssClass="modern-grid" 
                 EmptyDataText="No leaves Submitted for this month." />
                 
-            <!-- FIX: Wrapped the Literal in a <div> and applied the CssClass to the wrapper. -->
-            <div class="message">
+            <div class="status-message">
                 <asp:Literal ID="litMessage" runat="server"></asp:Literal>
-                 <asp:Button ID="HomeButton" runat="server" Text="Go to Home Page" OnClick="HomeButton_Click" />
-
             </div>
+
+            <asp:Button ID="HomeButton" runat="server" Text="Go to Home Page" OnClick="HomeButton_Click" CssClass="styled-button" />
         </div>
     </form>
 </body>
