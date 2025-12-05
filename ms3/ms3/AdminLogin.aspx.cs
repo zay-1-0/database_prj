@@ -29,7 +29,7 @@ namespace ms3
             string pass = Password.Text;
 
             if(id == "admin" && pass == "admin") Response.Redirect("AdminHomePage.aspx");
-            else Response.Write("Invalid username or password");
+            else Response.Write("<script>alert('Wrong Password or ID.');</script>");
 
         }
 

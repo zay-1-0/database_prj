@@ -72,12 +72,7 @@ namespace ms3
                         DeductionGridView.DataSource = dt;
                         DeductionGridView.DataBind();
 
-                        if (dt.Rows.Count == 0)
-                        {
-                            // No records found for the given semester
-                            // colour is blue using html
-                            litMessage.Text = "<p style='color:blue;'>No deduction records caused by attendance found for month " + MonthValue + ".</p>";
-                        }
+                     
                     }
                     catch (Exception ex)
                     {
