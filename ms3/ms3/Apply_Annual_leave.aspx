@@ -152,9 +152,9 @@
             <asp:Button ID="SubmitDates" runat="server" Text="Submit Leave Request" OnClick="SubmitDates_Click" CssClass="btn-submit" />
             
             <!-- Message Area -->
-            <div class="message-area">
+            <div class="message-area"> 
                 <asp:Literal ID="litMessage" runat="server"></asp:Literal>
-            </div>
+            </div> 
 
             <!-- Home Button -->
             <asp:Button ID="HomeButton" runat="server" Text="Go to Home Page" OnClick="HomeButton_Click" CssClass="btn-home" />

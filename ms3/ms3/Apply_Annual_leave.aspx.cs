@@ -14,7 +14,7 @@ namespace ms3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            litMessage.Text = "<p style='color:green;'>Your Id is : " + Session["Employee_id"] + "</p>";
+//            litMessage.Text = "<p style='color:green;'>Your Id is : " + Session["Employee_id"] + "</p>";
         }
 
         protected void SubmitDates_Click(object sender, EventArgs e)
