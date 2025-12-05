@@ -6,19 +6,17 @@
 
 <head runat="server">
 
-    <title>Upperboard Leave Approvals</title>
+    <title>Employee Evaluation</title>
 
     <style>
-        /* 1. Reset and Base Styles */
         html, body {
             height: 100%;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); /* Cool gradient background */
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
         }
 
-        /* 2. Center everything using Flexbox */
         #form1 {
             height: 100%;
             display: flex;
@@ -26,76 +24,77 @@
             align-items: center;
         }
 
-        /* 3. The "Card" Container */
         .evaluation-card {
             background-color: white;
             padding: 40px 50px;
             border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* Deep shadow for pop effect */
-            width: 400px;
+            width: 430px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.18);
             text-align: center;
-            transition: transform 0.3s ease;
+            transition: transform .3s ease;
         }
 
         .evaluation-card:hover {
-            transform: translateY(-5px); /* Subtle lift animation on hover */
+            transform: translateY(-5px);
         }
 
-        /* 4. Title Styling */
         .page-title {
             font-size: 24px;
-            color: #333;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             font-weight: 700;
+            color: #333;
             text-transform: uppercase;
-            letter-spacing: 1px;
             border-bottom: 2px solid #007bff;
-            padding-bottom: 10px;
+            padding-bottom: 7px;
             display: inline-block;
         }
 
-        /* 5. DropDown Styling */
-        /* Note: We target select elements because asp:DropDownList renders as <select> */
-        .styled-dropdown {
+        .styled-dropdown,
+        .styled-textbox {
             width: 100%;
             padding: 12px;
-            margin-bottom: 25px;
-            border: 2px solid #e0e0e0;
+            margin-bottom: 18px;
             border-radius: 8px;
-            background-color: #fafafa;
-            font-size: 16px;
-            color: #555;
-            cursor: pointer;
+            border: 2px solid #dcdcdc;
+            background: #fafafa;
+            font-size: 15px;
             outline: none;
-            transition: border-color 0.3s ease;
+            transition: border .3s ease;
         }
 
-        .styled-dropdown:focus {
+        .styled-dropdown:focus,
+        .styled-textbox:focus {
             border-color: #007bff;
         }
 
-        /* 6. Button Styling */
-        /* We target input[type=submit] because asp:Button renders as that */
         .styled-button {
             width: 100%;
             padding: 12px;
-            background-color: #007bff;
+            background: #007bff;
             color: white;
             border: none;
             border-radius: 8px;
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 123, 255, 0.3);
+            transition: .3s;
+            margin-top: 10px;
         }
 
         .styled-button:hover {
-            background-color: #0056b3;
-            box-shadow: 0 6px 12px rgba(0, 123, 255, 0.4);
+            background: #0056b3;
             transform: translateY(-2px);
         }
-        
+
+        .input-label {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            display: block;
+            text-align: left;
+            color: #333;
+        }
+
     </style>
 
 </head>
@@ -105,14 +104,36 @@
     <form id="form1" runat="server">
 
         <div class="evaluation-card">
-            
-            <!-- Replaced plain text with a styled heading -->
+
             <div class="page-title">Evaluate Employee</div>
-            
-            <!-- Added CssClass to your existing controls -->
-            <asp:DropDownList ID="ddlEmployees" runat="server" CssClass="styled-dropdown" />
-            
-            <asp:Button ID="HomeButton" runat="server" Text="Go to Home Page" OnClick="HomeButton_Click" CssClass="styled-button" />
+
+            <!-- Employee Label + Dropdown -->
+            <label class="input-label">Select Employee</label>
+            <asp:DropDownList ID="ddlEmployees" runat="server" CssClass="styled-dropdown"></asp:DropDownList>
+
+            <!-- Rating Label + Dropdown -->
+            <label class="input-label">Rating (1–5)</label>
+            <asp:DropDownList ID="ddlRating" runat="server" CssClass="styled-dropdown">
+                <asp:ListItem Value="1">1</asp:ListItem>
+                <asp:ListItem Value="2">2</asp:ListItem>
+                <asp:ListItem Value="3">3</asp:ListItem>
+                <asp:ListItem Value="4">4</asp:ListItem>
+                <asp:ListItem Value="5">5</asp:ListItem>
+            </asp:DropDownList>
+
+            <!-- Comment Label + Textbox -->
+            <label class="input-label">Comment</label>
+            <asp:TextBox ID="txtComment" runat="server" CssClass="styled-textbox" TextMode="MultiLine" Rows="3" placeholder="Write a comment..."></asp:TextBox>
+
+            <!-- Semester Label + Textbox -->
+            <label class="input-label">Semester</label>
+            <asp:TextBox ID="ddlSemester" runat="server" CssClass="styled-dropdown"></asp:TextBox>
+
+            <!-- Submit Button -->
+            <asp:Button ID="btnSubmit" runat="server" Text="Submit Evaluation" CssClass="styled-button" OnClick="btnSubmit_Click" />
+
+            <!-- Back Button -->
+            <asp:Button ID="HomeButton" runat="server" Text="Go to Home Page" CssClass="styled-button" OnClick="HomeButton_Click" />
 
         </div>
 

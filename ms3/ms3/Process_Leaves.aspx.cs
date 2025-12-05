@@ -40,7 +40,7 @@ namespace ms3
                     CASE 
                         WHEN AL.request_ID IS NOT NULL THEN 'Annual'
                         WHEN UL.request_ID IS NOT NULL THEN 'Unpaid'
-                        ELSE 'Other'
+                        
                     END AS LeaveType,
                     AL.replacement_emp
                 FROM Employee_Approve_Leave EA
