@@ -51,12 +51,12 @@ namespace ms3
 
         protected void Eval_Emp1(object sender, EventArgs e)
         {
-
+            Response.Redirect("Eval_Emp.aspx");
         }
 
         protected void Proc_Lev(object sender, EventArgs e)
         {
-
+            Response.Redirect("Process_Leaves.aspx");
         }
     }
 }

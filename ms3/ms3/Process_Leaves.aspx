@@ -1,9 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Dean_Pres_exc.aspx.cs" Inherits="ms3.Dean_Pres_exc" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Process_Leaves.aspx.cs" Inherits="ms3.Process_Leaave" %>
 
 <!DOCTYPE html>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Upperboard Leave Approvals</title>
+        <title>Upperboard Leave Approvals</title>
     <style>
         .page-title {
             font-family: Arial;
@@ -59,16 +60,7 @@
 
 
         <asp:Label ID="lblMessage" runat="server" ForeColor="Green"></asp:Label>
-
-        <br />
-        <br />
-        Evaluate Employee:<br />
-        <br />
-
-
-        <asp:DropDownList ID="ddlEmployees" runat="server" /><br />
-
+        </div>
     </form>
 </body>
 </html>
-
