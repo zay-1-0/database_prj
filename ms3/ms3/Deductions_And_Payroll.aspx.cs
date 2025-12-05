@@ -141,6 +141,7 @@ namespace ms3
         {
             int employeeId = int.Parse(ddlEmployees.SelectedValue);
 
+ 
             if (employeeId == 0)
             {
                 lblMessage.Text = "Please select an employee.";
