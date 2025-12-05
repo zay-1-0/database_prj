@@ -5,91 +5,131 @@
 <head runat="server">
     <title>Employee Deductions and Payroll</title>
     <style>
+        /* Body styling */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #eaf0f8;
+            font-family: 'Poppins', Arial, sans-serif;
+            background: linear-gradient(135deg, #1E3A8A, #60A5FA);
             margin: 0;
             padding: 20px;
+            display: flex;
+            justify-content: center;
         }
 
+        /* Main container */
         .container {
             max-width: 700px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            width: 100%;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            animation: fadeIn 1s ease-in-out;
         }
 
+        /* Heading */
         h2 {
             text-align: center;
-            color: #0056b3;
+            color: #1E3A8A;
             margin-bottom: 30px;
+            font-size: 28px;
         }
 
+        /* Labels */
+        label, asp\:Label {
+            display: block;
+            font-weight: 600;
+            color: #1E3A8A;
+            margin-bottom: 8px;
+        }
+
+        /* DropDownLists and TextBoxes */
+        asp\:DropDownList, asp\:TextBox {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #60A5FA;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        asp\:DropDownList.ddl-employee {
+            background-color: #f9fafb;
+            color: #1E3A8A;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        asp\:DropDownList.ddl-employee:hover, asp\:DropDownList.ddl-employee:focus {
+            border-color: #1E3A8A;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            outline: none;
+        }
+
+        /* Buttons */
         .btn {
-            background-color: #007ACC;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            margin-top: 10px;
+            width: 100%;
+            padding: 14px;
             margin-bottom: 15px;
-            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 12px;
             cursor: pointer;
-            font-size: 14px;
+            background: linear-gradient(90deg, #1E3A8A, #60A5FA);
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
         }
 
         .btn:hover {
-            background-color: #005fa3;
+            background: linear-gradient(90deg, #60A5FA, #1E3A8A);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
 
+        /* Back button */
         .btn-back {
-            background-color: #999;
-            margin-bottom: 20px;
+            background: #FACC15;
+            margin-bottom: 30px;
         }
 
         .btn-back:hover {
-            background-color: #777;
+            background: #eab308;
         }
 
-        label, asp\:Label {
-            display: inline-block;
-            margin-top: 10px;
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: #0056b3;
-        }
-
-        asp\:DropDownList, asp\:TextBox {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #007ACC;
-            border-radius: 4px;
-            margin-bottom: 15px;
-            box-sizing: border-box;
-        }
-
-        #lblMessage {
-            display: block;
-            margin-top: 15px;
-            font-weight: bold;
-            text-align: center;
-        }
-
+        /* Date range styling */
         .date-range {
             display: flex;
-            gap: 10px;
+            gap: 15px;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .date-range asp\:Label {
-            width: 80px;
+            width: 90px;
             margin-bottom: 0;
+            color: #1E3A8A;
         }
 
         .date-range asp\:TextBox {
             flex: 1;
+        }
+
+        /* Message label */
+        #lblMessage {
+            display: block;
+            margin-top: 20px;
+            font-weight: bold;
+            text-align: center;
+            color: #dc2626;
+            font-size: 16px;
+        }
+
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
@@ -104,18 +144,22 @@
 
             <h2>Employee Deductions and Monthly Payroll</h2>
 
+            <!-- Improved Select Employee -->
             <asp:Label ID="lblEmployee" runat="server" Text="Select Employee:" /><br />
-            <asp:DropDownList ID="ddlEmployees" runat="server" /><br />
+            <asp:DropDownList ID="ddlEmployees" runat="server" CssClass="ddl-employee" 
+                AppendDataBoundItems="true">
+                <asp:ListItem Text="-- Select an Employee --" Value="" />
+            </asp:DropDownList><br />
 
+            <!-- Deduction Buttons -->
             <asp:Button ID="btnDeductHours" runat="server" Text="Deduct Hours" CssClass="btn"
                 OnClick="btnDeductHours_Click" /><br />
-
             <asp:Button ID="btnDeductDays" runat="server" Text="Deduct Days" CssClass="btn"
                 OnClick="btnDeductDays_Click" /><br />
-
             <asp:Button ID="btnDeductUnpaid" runat="server" Text="Deduct Unpaid" CssClass="btn"
                 OnClick="btnDeductUnpaid_Click" /><br />
 
+            <!-- Date Range -->
             <div class="date-range">
                 <asp:Label ID="lblFrom" runat="server" Text="From Date:" />
                 <asp:TextBox ID="txtFrom" runat="server" TextMode="Date" />

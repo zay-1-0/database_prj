@@ -1,107 +1,125 @@
-﻿a<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminLogin.aspx.cs" Inherits="ms3.AdminLogin" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminLogin.aspx.cs" Inherits="ms3.AdminLogin" %>
 
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Login</title>
+    <title>Admin Login</title>
     <style>
-        /* Center the whole form vertically and horizontally */
+        /* Body with gradient background */
         body {
-            background-color: #e6f2ff;
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', Arial, sans-serif;
+            background: linear-gradient(135deg, #1E3A8A, #60A5FA);
+            margin: 0;
+            padding: 0;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
         }
 
+        /* Login box container */
         .login-container {
-            width: 400px;          /* bigger form */
-            padding: 40px;         /* spacing inside form */
-            border: 2px solid #007bff;
-            border-radius: 15px;
+            width: 400px;
             background-color: #ffffff;
-            box-shadow: 4px 4px 20px rgba(0,0,0,0.3);
-        }
-
-        .login-container h2 {
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
             text-align: center;
-            color: #007bff;
-            margin-bottom: 30px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Heading */
+        h2 {
             font-size: 28px;
+            color: #1E3A8A;
+            margin-bottom: 30px;
         }
 
-        .login-container label {
+        /* Labels */
+        label, asp\:Label {
             display: block;
-            margin-top: 15px;
-            font-weight: bold;
-            color: #333;
+            font-weight: 600;
+            color: #1E3A8A;
+            margin-bottom: 8px;
+            text-align: left;
         }
 
-        .login-container input[type="text"], 
-        .login-container input[type="password"], 
-        .login-container asp\:TextBox {
+        /* Input fields */
+        asp\:TextBox, input[type="text"], input[type="password"] {
             width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border-radius: 8px;
-            border: 1px solid #007bff;
+            padding: 12px;
+            border: 1px solid #60A5FA;
+            border-radius: 12px;
+            margin-bottom: 20px;
             font-size: 16px;
             box-sizing: border-box;
+            transition: all 0.3s ease;
         }
 
-        .login-container .btn {
+        asp\:TextBox:focus, input:focus {
+            border-color: #1E3A8A;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            outline: none;
+        }
+
+        /* Login button */
+        .btn {
             width: 100%;
-            margin-top: 25px;
-            padding: 12px;
-            background-color: #007bff;
-            color: white;
+            padding: 14px;
+            font-size: 16px;
             font-weight: bold;
-            font-size: 18px;
             border: none;
-            border-radius: 8px;
+            border-radius: 12px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            background: linear-gradient(90deg, #1E3A8A, #60A5FA);
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            margin-bottom: 15px;
         }
 
-        .login-container .btn:hover {
-            background-color: #0056b3;
+        .btn:hover {
+            background: linear-gradient(90deg, #60A5FA, #1E3A8A);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
 
-        /* Center the error message under the button */
+        /* Error message styling */
         .message-container {
-            text-align: center;
-            margin-top: 15px;
+            margin-top: 10px;
         }
 
         .message-container asp\:Label {
-            color: red;
+            color: #dc2626;
             font-weight: bold;
             font-size: 16px;
         }
+
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
+
 <body>
     <form id="form1" runat="server">
         <div class="login-container">
-            <h2>Login</h2>
+            <h2>Admin Login</h2>
 
-            <label for="UserName">User Name:</label>
+            <label for="<%= UserName.ClientID %>">User Name:</label>
             <asp:TextBox ID="UserName" runat="server" />
 
-            <label for="Password">Password:</label>
-            <asp:TextBox ID="Password" runat="server" TextMode="Password" Text=""  autocomplete="off" />
+            <label for="<%= Password.ClientID %>">Password:</label>
+            <asp:TextBox ID="Password" runat="server" TextMode="Password" autocomplete="off" />
 
             <asp:Button ID="LoginButton" runat="server" Text="Log In" CssClass="btn" OnClick="Login_Click" />
 
-           
-            
+            <div class="message-container">
                 <asp:Label ID="lblMessage" runat="server" Text="" />
-           
+            </div>
         </div>
     </form>
 </body>
 </html>
-
