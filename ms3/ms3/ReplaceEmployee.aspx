@@ -43,7 +43,7 @@
             margin-bottom: 4px;
         }
 
-        .form-row input {
+        .form-row input, .form-row asp\:TextBox {
             width: 100%;
             padding: 6px 8px;
             border-radius: 6px;
@@ -94,12 +94,12 @@
 
                 <div class="form-row">
                     <label for="txtFromDate">From Date (e.g. 2025-12-01):</label>
-                    <asp:TextBox ID="txtFromDate" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtFromDate" runat="server" TextMode="Date"></asp:TextBox>
                 </div>
 
                 <div class="form-row">
                     <label for="txtToDate">To Date (e.g. 2025-12-15):</label>
-                    <asp:TextBox ID="txtToDate" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtToDate" runat="server" TextMode="Date"></asp:TextBox>
                 </div>
 
                 <asp:Button ID="btnReplace" runat="server"
