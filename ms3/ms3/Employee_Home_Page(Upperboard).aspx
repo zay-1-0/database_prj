@@ -46,6 +46,7 @@
 <body>
     <form id="form1" runat="server">
         <div class="content-container"> 
+            <asp:Button ID="SignOutButton" runat="server" Text="Sign Out" OnClick="signOut" Width="100px" />
             <asp:Label ID="Label1" runat="server" Text="Home Page" style="font-size: 1.5em; font-weight: bold; margin-bottom: 15px; display: block;"></asp:Label>
             <br />
             <%-- The <br /> tags can be replaced with CSS margins for better spacing --%>
