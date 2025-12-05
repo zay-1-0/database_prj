@@ -17,7 +17,10 @@
 <body>
     <form id="form1" runat="server">
         <div class="auto-style1">
-            <strong><span class="auto-style2">Welcome, Admin</span><br />
+            <asp:Button ID="Button8" runat="server" Text="Sign Out" OnClick="signOut" />
+            <strong><span class="auto-style2">
+            <br />
+            Welcome, Admin</span><br />
             <br />
 
             </strong>
@@ -34,6 +37,12 @@
             <asp:Button ID="Button6" runat="server" OnClick="AddHoliday" Text="Add Official Holiday" />
             <br />
             <asp:Button ID="Button7" runat="server" OnClick="InitiateAttendance" Text="Initiate Today's Attendance" />
+            <br />
+            <asp:Button ID="Button9" runat="server" OnClick="GoToAttendanceTools" Text="Attendance Tools" />
+            <br />
+            <asp:Button ID="Button10" runat="server" Text="WinterPerformance" OnClick="GoToWinterPerformance" />
+            <br />
+            <asp:Button ID="Button11" runat="server" Text="Yesterday's Attendance" OnClick="GoToYesterdaysAttendance" />
             <br />
             <br />
             <asp:Label ID="WarningLabel" runat="server" CssClass="auto-style1" ForeColor="Red" Visible="false"></asp:Label>

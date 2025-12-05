@@ -40,6 +40,9 @@
         <div>
             <asp:Button ID="Button1" runat="server" Text="Manage Leaves" OnClick="btnLeaves_Click" CssClass="button-style" />
             <asp:Button ID="btnDeductionsPayroll" runat="server" Text="Deductions & Payroll" OnClick="btnDeductionsPayroll_Click" CssClass="button-style" />
+            <br />
+            <asp:Button ID="Button2" runat="server" CssClass="button-style" OnClick="signOut" Text="Sign Out" />
+            <br />
         </div>
     </form>
 </body>

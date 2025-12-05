@@ -110,5 +110,25 @@ namespace ms3
             WarningLabel.Text = message;
             WarningLabel.Visible = true;
         }
+
+        protected void signOut(object sender, EventArgs e)
+        {
+            Response.Redirect("First_page.aspx");
+        }
+
+        protected void GoToAttendanceTools(object sender, EventArgs e)
+        {
+            Response.Redirect("AttendanceTools.aspx");
+        }
+
+        protected void GoToWinterPerformance(object sender, EventArgs e)
+        {
+            Response.Redirect("WinterPerformance.aspx");
+        }
+
+        protected void GoToYesterdaysAttendance(object sender, EventArgs e)
+        {
+            Response.Redirect("YesterdaysAttendance.aspx");
+        }
     }
 }

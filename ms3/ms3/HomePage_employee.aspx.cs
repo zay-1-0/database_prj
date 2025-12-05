@@ -48,5 +48,10 @@ namespace ms3
         {
             Response.Redirect("Leaves.aspx");
         }
+
+        protected void signOut(object sender, EventArgs e)
+        {
+            Response.Redirect("First_page.aspx");
+        }
     }
 }

@@ -23,5 +23,10 @@ namespace ms3
         {
             Response.Redirect("Deductions_And_Payroll.aspx");
         }
+
+        protected void signOut(object sender, EventArgs e)
+        {
+            Response.Redirect("First_page.aspx");
+        }
     }
 }
